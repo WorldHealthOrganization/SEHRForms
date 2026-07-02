@@ -1,0 +1,40 @@
+body {
+    background: #f2f2f2;
+    font-family: Arial
+}
+
+.form-box {
+    background: #fff;
+    border: 3px solid #2b74b8;
+    max-width: 900px;
+    padding: 20px
+}
+
+.logo {
+    border-right: 1px solid #000;
+    
+    font-weight: bold
+}
+
+.line-input {
+    border: none;
+    border-bottom: 1px solid #000
+}
+
+.signature {
+    height: 35px;
+    border-bottom: 1px solid #000
+}
+
+.beneficiary th {
+    text-align: center;
+    background: #f7f7f7
+}
+
+@media print{
+
+.no-print{
+    display:none !important;
+}
+
+}
