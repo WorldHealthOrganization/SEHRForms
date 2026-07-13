@@ -2,6 +2,7 @@
     
     $(document).ready(function () {
 
+        
         FillFormData();
    
         $('#frm input[type="button"]').click(function () {
@@ -66,6 +67,9 @@
             $("#ddlSex").val("");
             $("#beneficiaryModal").modal("show");
         });
+
+        $("#pageLoader").fadeOut(200);
+
     
 });
 

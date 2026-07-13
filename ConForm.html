@@ -13,6 +13,119 @@
 </head>
 
 <body>
+
+    <!-- The page loader -->
+    <div id="pageLoader" style="
+        position: fixed;
+        top:0; left:0;
+        width:100%; height:100%;
+        background: rgba(255,255,255,0.8);
+        z-index: 9999;
+        display:flex;
+        align-items:center;
+        justify-content:center;">
+        
+        <div class="spinner-border text-primary"></div>
+        <div class="text-primary m-2">Processing...</div>
+    </div>
+
+
+    <!--Site Header-->
+    <div class="site-header container-fluid">
+
+		<div class="row align-items-center">
+
+			<div class="col-md-2 text-center">
+				<img src="Images/WHOLogoWhite.png" class="site-logo" />
+			</div>
+
+			<div class="col-md-8 text-center">
+				<h2 class="site-title">WHO Consultant Details Form</h2>
+			</div>
+			
+			<div class="col-md-2 text-center">
+				<img src="Images/user.png" class="site-logo" />
+			</div>
+		</div>
+	
+    </div>
+
+
+
+
+
+
+    <!------------------------------------------------ Top Navigation --------------------------------------------------------------------------->
+
+
+
+
+
+
+    <ul class="nav nav-tabs mb-3" id="sheetTabs">
+
+        <li class="nav-item">
+        <button type="button" class="nav-link active" data-bs-toggle="tab" data-bs-target="#instructionSheet">
+        Instructions
+        </button>
+        </li>
+        
+        <li class="nav-item">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part1Sheet">
+        Part 1
+        </button>
+        </li>
+
+        <li class="nav-item">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part2Sheet">
+        Part 2
+        </button>
+        </li>
+
+        <li class="nav-item">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part3Sheet">
+        Part 3
+        </button>
+        </li>
+
+        <li class="nav-item">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#uploadSignedFormPart">
+        Upload Signed Form
+        </button>
+        </li>
+
+    </ul>
+
+    <div class="tab-content" id="sheetTabContent">
+
+
+
+
+
+
+<!------------------------------------------------ Instructions --------------------------------------------------------------------------->
+
+
+
+
+    <div class="tab-pane fade show active" id="instructionSheet">
+        <div class="container">
+            <h3>Instructions</h3>
+            <p>Please complete this form and return it duly signed and witnessed to the Responsible Officer in WHO. You may alter your designation of beneficiary at any time by filing a new form which will supersede the previous one.</p>
+        </div>
+    </div>
+
+    
+
+
+
+<!------------------------------------------------ Part 1 Form --------------------------------------------------------------------------->
+
+
+
+<div class="tab-pane fade page-break" id="part1Sheet">
+
+
     <div class="container form-box my-4">
         <div class="row border-bottom">
             <div class="col-2 logo text-center"><img src="/Images/SELogoBlack.png" alt="WHO Logo" class="img-fluid">
@@ -137,21 +250,694 @@
         </div>
     </div>
 
+</div>
 
 
 
-    <h1>ConForm</h1>
-    <form id="frm" method="post">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required><br><br>
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required><br><br>
 
-        <label for="message">Message:</label><br>
-        <textarea id="message" name="message" rows="4" cols="50" required></textarea><br><br>
 
-        <input type="button" value="Submit">
-    </form>
 
+
+
+
+
+
+
+<!------------------------------------------------- Part 2 Form -------------------------------------------------------------->
+
+
+
+
+
+
+
+
+
+
+<div class="tab-pane fade page-break" id="part2Sheet">  
+
+
+    <main class="page">
+    <div class="form-shell">
+      
+      <header class="masthead">
+        <img src="Images/who-emblem.png" alt="World Health Organization emblem">
+        <div>
+          <h1>Declaration of Interests for WHO Non-Staff Workforce</h1>
+          <p class="mb-0 text-secondary" style="display: none;">Please answer each question below. If the answer to any question is "Yes", briefly describe the circumstances in the explanation section.</p>
+        </div>
+      </header>
+
+      <form class="content">
+        <section class="notice">
+          <p>As part of its work on global health, the World Health Organization (WHO) at times needs to hire non-staff workforce. To ensure the highest integrity and public confidence in its activities, WHO requires that all members of its workforce disclose any circumstances that could give rise to a conflict of interest related to the work to be undertaken for WHO.</p>
+          <p>All WHO non-staff workforce must disclose any circumstances that could represent a potential conflict of interest. When filling out this Declaration of Interest form (DOI), you must disclose any personal, financial, professional or other interest relevant to the subject of the work you have been asked to undertake and any interest that could be affected by the outcome of the work. You must also declare relevant interests of your immediate family members (see definition below) and, if you are aware of it, relevant interests of other parties with whom you have substantial common interests, and which may be perceived as unduly influencing your contribution to WHO. For further information on how to fill this form, please consult Annex A (Guidance on how to complete the DOI form for WHO non-staff workforce).</p>
+          <p class="mb-0">Please complete this form upon receipt and submit it to the responsible Technical Unit/Department for assessment. Please be informed that without this form being duly completed, submitted to, and assessed by WHO, your contract will not be issued. You must also promptly inform the responsible Technical Unit/Department if there is any change in the provided information prior to, or during the course of, your engagement with WHO Please be advised that failure to disclose all relevant and required information on this form, depending on the circumstances, may lead WHO to terminate your contract and/or not consider you for future engagements</p>
+          <p>Answering “Yes” to a question on this form does not automatically disqualify you or limit your engagement with WHO. Your answers will be reviewed by the responsible Technical Unit/Department to determine whether the interests you disclosed constitute a conflict in respect of the envisaged work and whether specific measures are required to manage the disclosure.</p>
+          <p>Please be informed that if you are currently engaged with WHO as an individual expert providing guidance on WHO’s normative work and participating in expert committees, advisory groups, conferences, study and scientific groups and other activities of the WHO, WHO in its sole discretion may determine that you may not hold a paid/nil-remunerated engagement with WHO in parallel. If you select to undertake a paid/nil-remunerated consultancy with the WHO, WHO may in its sole discretion terminate your engagement as an individual expert.</p>
+          <div class="row g-3">
+            <div class="col-3">
+              <label class="form-label fw-semibold" for="name">Name:</label>
+              
+            </div>
+            <div class="col-6"><input class="form-control" id="name" name="name" type="text"></div>
+            <div class="col-3"></div>
+            <div class="col-3">
+              <label class="form-label fw-semibold" for="affiliatedInstitutions">Affiliated institution(s):</label>
+              
+            </div>
+            <div class="col-6"><input class="form-control" id="affiliatedInstitutions" name="affiliatedInstitutions" type="text"></div>
+            <div class="col-3"></div>
+            <div class="col-3">
+              <label class="form-label fw-semibold" for="email">Email:</label>
+              
+            </div>
+            <div class="col-6"><input class="form-control" id="email" name="email" type="email"></div>
+            <div class="col-3"></div>
+        </section>
+
+        <section class="section">
+          <h2>Engagement Details</h2>
+          <div class="section-body">
+            <div class="row g-3">
+              <div class="col-lg-6">
+                <label class="form-label fw-semibold" for="contractType">Type of contract</label>
+                <select class="form-select" id="contractType" name="contractType">
+                  <option value="">Select one</option>
+                  <option>Intern</option>
+                  <option>Consultant (remunerated or nil-remuneration consultant contracts)</option>
+                  <option>Special Service Agreements (SSA) holder</option>
+                  <option>Other (e.g. Local Individual Contractor Agreements - LICA)</option>
+                </select>
+              </div>
+              <div class="col-lg-6">
+                <label class="form-label fw-semibold d-block">The Terms of Reference (ToR) have been received</label>
+                <div class="d-flex gap-4">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="torReceived" id="torYes" value="yes">
+                    <label class="form-check-label" for="torYes">Yes</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="torReceived" id="torNo" value="no">
+                    <label class="form-check-label" for="torNo">No</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold" for="duration">Planned duration (days/months)</label>
+                <input class="form-control" id="duration" name="duration" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label fw-semibold" for="workPattern">Full time/part time</label>
+                <input class="form-control" id="workPattern" name="workPattern" type="text">
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="workTitle">Title of the work to be performed as in the ToR, including brief description</label>
+                <textarea class="form-control" id="workTitle" name="workTitle"></textarea>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>What type of interest needs to be declared (this list not being exhaustive)? </h2>
+          <div class="section-body">
+            <p>Different <i><u>types of interests</u></i> may exist and arise. The following, non-exhaustive, list may be referred to as a guide:</p>
+            <ol class="mb-0">
+              <li>a close personal relationship with a member of the WHO workforce, or an immediate family member employed by WHO.</li>
+              <li>an interest of an immediate family member (see definition below);</li>
+              <li>any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO  or which has a commercial interest in the work of WHO, or a common area of activity with WHO;</li>
+              <li>a proprietary interest in a substance, technology, data, or process (e.g., intellectual property), relevant to WHO's work;</li>
+              <li>a financial interest, e.g., shares or bonds, in a commercial entity with which you may be required, directly or indirectly, to have official dealings on behalf of the Organization, or which has a commercial interest in the work of WHO, or a common area of activity with WHO (except share holdings through general mutual funds or similar arrangements where you have no control over the selection of shares).</li>
+              <li>public statements or positions (e.g. elected position or public expression of political opinions)</li>
+              <li>other engagements with WHO/PAHO (e.g. other parallel contractual arrangements, or participation as an expert in a WHO expert advisory group or expert committee) or related entities (e.g. within the UN system or partner organizations such as Collaborating Centres or non-State actors in official relations with WHO)</li>
+            </ol>
+            <br>
+            <p>As a result of WHO’s strong stance against tobacco use and the arms industry, WHO non-staff workforce should disclose whether they, or their immediate family members have any relationship with any part of what is referred to as “the tobacco” or arms industries.</p>
+          </div>
+          
+        </section>
+
+        <section class="section" style="border:0px !important">
+          <p><b>Please answer each of the questions below.</b> If the answer to any of the questions is "yes", briefly describe the circumstances in the box underneath. </p>
+          <p>The term “you” refers to yourself and your immediate family members (i.e. spouse or partner with whom you have a close and on-going personal relationship, your children, your parents, siblings, in-laws). “Entity” refers to, but is not limited to, Non-governmental Organizations, private sector entities, Philanthropic foundations and Academic institutions”. "Commercial entity" includes any commercial business, an industry association, research institution or other enterprise whose funding is significantly derived from commercial sources with an interest related to the subject of the envisaged work for WHO. "Organization" includes a Governmental, intergovernmental and supranational Organization.</p>
+        </section>
+
+        <section class="section">
+          <h2>Personal and Family Relationships</h2>
+          <div class="section-body">
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">1. Do you have any close personal relationships (e.g. partnership) and/or family relationship with a member of the WHO workforce (staff or non-staff)?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1yes" value="yes"><label class="form-check-label" for="q1yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1no" value="no"><label class="form-check-label" for="q1no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Employment, Research and Consulting</h2>
+          <div class="section-body">
+            <p class="fw-semibold">2. For the duration of the envisaged contractual engagement with WHO, will you:</p>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">2.1. Be under any other employment contract, including formal leave of absence from your current employer?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2yes" value="yes"><label class="form-check-label" for="q2yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2no" value="no"><label class="form-check-label" for="q2no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">2.2. receive any other in-kind or financial support (e.g. grant, bursary, scholarship, payment of travel or living costs, salary) from any entity or organization</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3yes" value="yes"><label class="form-check-label" for="q3yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3no" value="no"><label class="form-check-label" for="q3no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">2.3.	be engaged in any other activity with WHO  in any location, including other contractual engagement, participation in WHO expert committees, panel meetings, or other advisory processes?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4yes" value="yes"><label class="form-check-label" for="q4yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4no" value="no"><label class="form-check-label" for="q4no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <p class="subprompt">3. Please indicate remuneration or other support received from any entity or organization in the past 4 years in the area of work to be performed for WHO:</p>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">3.1. remuneration (including employment, consulting, and other services such as technical or other advisor)?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5yes" value="yes"><label class="form-check-label" for="q5yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5no" value="no"><label class="form-check-label" for="q5no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">3.2.	support, either directly or through your affiliated institution(s) (including research grants, sponsorships, or non-monetary support such as equipment, facilities, research assistants, paid travel valued at more than USD 1,000 overall)?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6yes" value="yes"><label class="form-check-label" for="q6yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6no" value="no"><label class="form-check-label" for="q6no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Investment Interests</h2>
+          <div class="section-body">
+            <p>4.	Within the past four (4) years, had or have you investments (valued at more than USD 5,000 overall) in an entity with which you may be required, directly or indirectly, to have official dealings on behalf of the Organization, or which has a commercial interest in the work of WHO, or a common area of activity with WHO or with an interest related to the work you will undertake for WHO? You may exclude mutual funds, pension funds or similar investments that are broadly diversified and over which you exercise no control .</p>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">4.1. Stocks, bonds, stock options, or other securities.</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7yes" value="yes"><label class="form-check-label" for="q7yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7no" value="no"><label class="form-check-label" for="q7no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">4.2. Commercial business interests (e.g. including proprietorships, partnerships, joint ventures, board memberships, or controlling interest in a company.)</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8yes" value="yes"><label class="form-check-label" for="q8yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8no" value="no"><label class="form-check-label" for="q8no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Intellectual Property</h2>
+          <div class="section-body">
+            <p>5.	Do you, or any entity with whom you are affiliated, have any intellectual property rights that might be enhanced or diminished by the outcome of the work you will undertake for WHO or which is relevant to WHO’s work?</p>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">5.1.	Patents, trademarks, or copyrights including pending applications</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9yes" value="yes"><label class="form-check-label" for="q9yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9no" value="no"><label class="form-check-label" for="q9no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">5.2.	Proprietary interest/know-how in a substance, technology, data or process</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10yes" value="yes"><label class="form-check-label" for="q10yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10no" value="no"><label class="form-check-label" for="q10no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Public Statements and Positions</h2>
+          <div class="section-body">
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">6.	Within the past four (4) years, have you provided any experts opinion or testimony related to the subject matter of work to be undertaken for WHO as part of a regulatory, legislative or judicial process?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11yes" value="yes"><label class="form-check-label" for="q11yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11no" value="no"><label class="form-check-label" for="q11no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">7.	Within the past four (4) years, have you held an office or other position, paid or unpaid, where you publicly represented interests or defended a position related to the subject of the work?	</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12yes" value="yes"><label class="form-check-label" for="q12yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12no" value="no"><label class="form-check-label" for="q12no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">8.	Is there any other aspect of your background or present circumstances not addressed above that might be perceived as affecting your objectivity or independence?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13yes" value="yes"><label class="form-check-label" for="q13yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13no" value="no"><label class="form-check-label" for="q13no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Additional Information</h2>
+          <div class="section-body">
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">9.	If not already disclosed above, have you worked for the competitor of a product or service that is the subject of the work or will your engagement with WHO enable you to obtain access to a competitor’s confidential proprietary information, or create for you a personal, professional, financial or business competitive advantage including as part of a WHO procurement process?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14yes" value="yes"><label class="form-check-label" for="q14yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14no" value="no"><label class="form-check-label" for="q14no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">10.	If not already disclosed above, do you have any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO  or which has a commercial interest in the work of WHO, or a common area of activity with WHO?</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15yes" value="yes"><label class="form-check-label" for="q15yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15no" value="no"><label class="form-check-label" for="q15no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">11.	Have you ever been subject to any administrative or disciplinary proceedings for misconduct which resulted in a disciplinary measure from any Organization and/or have you ever been debarred, suspended, or excluded from any regulatory, professional body, Organization of the UN system or international financial institution? If yes, please provide further information in the section below.</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16yes" value="yes"><label class="form-check-label" for="q16yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16no" value="no"><label class="form-check-label" for="q16no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">12.	Have you ever been arrested, indicted, or summoned into a court as a defendant in a criminal proceeding, or convicted, fined, imprisoned for the violation of any law (excluding minor traffic violations)? If yes, please provide further information in the section below.</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17yes" value="yes"><label class="form-check-label" for="q17yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17no" value="no"><label class="form-check-label" for="q17no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Industry Specific Questions</h2>
+          <div class="section-body">
+            <p><i>Answer without regard to relevance to the subject of the work you will undertake for WHO.</i></p>
+            <p>Within the past 4 years, have you held employment or received research support or other funding from, or had any other professional relationship with an entity directly involved in the production, manufacture, distribution or sale of products or representing the interests of any of the following: </p>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">13. Tobacco industry.</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18yes" value="yes"><label class="form-check-label" for="q18yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18no" value="no"><label class="form-check-label" for="q18no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">14. Arms industry.</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19yes" value="yes"><label class="form-check-label" for="q19yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19no" value="no"><label class="form-check-label" for="q19no">No</label></div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <div class="question-grid">
+                <p class="question-text">15. Pharmaceutical industry.</p>
+                <div class="answer-options">
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20yes" value="yes"><label class="form-check-label" for="q20yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20no" value="no"><label class="form-check-label" for="q20no">No</label></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Explanation of "Yes" Responses</h2>
+          <div class="section-body">
+            <p>If the answer any of the above questions is “Yes”, briefly describe the circumstance below. If you do not describe the nature of an interest or if you do not provide the amount or value involved where relevant, the conflict will be assumed to be significant. </p>
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle">
+                <thead>
+                  <tr>
+                    <th scope="col">Nos. 1-15: Type of interest, question number and category (e.g., Intellectual Property 4.a copyrights) and basic descriptive details (your role, scope and nature etc.).</th>
+                    <th scope="col">Name of entity or organization</th>
+                    <th scope="col">Belongs to you, a family member, your employer/affiliated institution(s), or other?</th>
+                    <th scope="col">Amount of income or value of interest</th>
+                    <th scope="col">Is the interest on-going or has it ceased? If ceased, please include month and year it ended.</th>
+                    <th scope="col">Any other relevant information</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><textarea class="form-control" name="explainDetails"></textarea></td>
+                    <td><textarea class="form-control" name="explainEntity"></textarea></td>
+                    <td><textarea class="form-control" name="explainOwner"></textarea></td>
+                    <td><textarea class="form-control" name="explainValue"></textarea></td>
+                    <td><textarea class="form-control" name="explainStatus"></textarea></td>
+                    <td><textarea class="form-control" name="explainOther"></textarea></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <label class="form-label fw-semibold" for="additionalProceedings">Nos. 6-15: Please provide additional information if “yes” in any of these sections (e.g. parties involved, time frame, type of proceeding etc.).</label>
+            <textarea class="form-control" id="additionalProceedings" name="additionalProceedings" rows="5"></textarea>
+          </div>
+        </section>
+
+        <section class="section">
+          <h2>Declaration</h2>
+          <div class="section-body">
+            <p>I hereby declare on my honour that the disclosed information is true and complete to the best of my knowledge. I understand that failing to fully complete this form and disclose all relevant information, depending on the circumstances, may lead the WHO terminating my contract and/ or not consider me for future engagements.</p>
+            <p>Should there be any change to the above information, I will promptly notify the responsible staff of WHO and complete a new declaration of interests form that describes the changes. This includes any change that occurs before or during my collaboration with WHO and through the period up to the publication of the final results or completion of the activity concerned.</p>
+            <div class="signature-row">
+              <div>
+                <label class="form-label fw-semibold" for="applicantDate">Date</label>
+                <input class="form-control" type="date" id="applicantDate" name="applicantDate">
+              </div>
+              <div>
+                <label class="form-label fw-semibold" for="applicantName">Name</label>
+                <input class="form-control" type="text" id="applicantName" name="applicantName">
+              </div>
+              <div>
+                <label class="form-label fw-semibold" for="applicantSignature">Signature</label>
+                <input class="form-control" type="text" id="applicantSignature" name="applicantSignature">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="sectionRespoOfficer">
+          <h2>Responsible Officer Review</h2>
+          <div class="section-body">
+            <p class="fw-semibold">Part to be completed by the responsible officer. Please tick the relevant box(es).</p>
+            <p>I have reviewed the form in conjunction with the Stellis Profile/CV and publicly available profile of the candidate, and have undertaken a background review in accordance with Annex 1  and:</p>
+            <div class="officer-check form-check">
+              <input class="form-check-input" type="checkbox" id="officerNoDisclosure" name="officerNoDisclosure">
+              <label class="form-check-label" for="officerNoDisclosure">1. No disclosure(s) has been made and nothing has been identified that would prevent the hiring of the envisaged candidate. </label>
+            </div>
+            <div class="officer-check form-check">
+              <input class="form-check-input" type="checkbox" id="officerNotRelevant" name="officerNotRelevant">
+              <label class="form-check-label" for="officerNotRelevant">2. It has been determined that the disclosure(s) is/are not relevant for the envisaged work and, in consultation with the Department Director/Unit Head , it has been determined that there is nothing preventing the envisaged candidate from being hired. A note for the record reflecting this assessment has been prepared.</label>
+            </div>
+            <div class="officer-check form-check">
+              <input class="form-check-input" type="checkbox" id="officerEthics" name="officerEthics">
+              <label class="form-check-label" for="officerEthics">3. It was determined that due to the interests disclosed further guidance from the Ethics Unit, CRE (CRE/Ethics Unit)  was needed in order to assess the disclosures made. The disclosures were discussed with the CRE/Ethics Unit and the following advice was provided</label>
+            </div>
+            <label class="form-label fw-semibold" for="ethicsAdvice">Advice provided by the CRE/Ethics Unit</label>
+            <textarea class="form-control mb-3" id="ethicsAdvice" name="ethicsAdvice"></textarea>
+
+            <p>As the final decision on whether to proceed, or not, with the hiring is that of the Department Director/Unit Head , the advice of the CRE/Ethics Unit was taken into consideration and it was decided by the Department Director/Unit Head  that:</p>
+            <div class="row g-3">
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="hiringProceed">The hiring can proceed as</label>
+                <textarea class="form-control" id="hiringProceed" name="hiringProceed"></textarea>
+              </div>
+              <div class="col-12">
+                <label class="form-label fw-semibold" for="mitigation">The disclosed interest can be mitigated by</label>
+                <textarea class="form-control" id="mitigation" name="mitigation"></textarea>
+              </div>
+            </div>
+            <div class="officer-check form-check mt-3">
+              <input class="form-check-input" type="checkbox" id="officerCannotHire" name="officerCannotHire">
+              <label class="form-check-label" for="officerCannotHire">The interest(s) disclosed is/are too significant and not compatible with WHO. The proposed candidate cannot be hired.</label>
+            </div>
+            <div class="officer-check form-check">
+              <input class="form-check-input" type="checkbox" id="officerNoteShared" name="officerNoteShared">
+              <label class="form-check-label" for="officerNoteShared">A note for the record reflecting this assessment has been prepared and a copy shared with the CRE/Ethics Unit.</label>
+            </div>
+            <div class="signature-row mt-3">
+              <div>
+                <label class="form-label fw-semibold" for="officerDate">Date</label>
+                <input class="form-control" type="date" id="officerDate" name="officerDate">
+              </div>
+              <div>
+                <label class="form-label fw-semibold" for="officerName">Name</label>
+                <input class="form-control" type="text" id="officerName" name="officerName">
+              </div>
+              <div>
+                <label class="form-label fw-semibold" for="officerSignature">Signature</label>
+                <input class="form-control" type="text" id="officerSignature" name="officerSignature">
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </main>
+
+
+
+
+</div>
+
+
+
+
+
+
+<!------------------------------------------- PART 3 Form ------------------------------------------------------------------>
+
+
+
+
+
+
+<div class="tab-pane fade page-break" id="part3Sheet">
+
+
+    <main class="page">
+    <div class="document">
+      
+      <header class="topbar">
+        <img src="Images/who-logo-medical-certificate.jpeg" alt="World Health Organization logo">
+        <div>
+          <h1>Medical Certificate of Fitness for Work</h1>
+          <p class="validity">Period of validity: One calendar year as of the date of signature by the attending physician below</p>
+        </div>
+      </header>
+
+      <form class="content">
+        <section class="section">
+          <h2 class="section-title">1. To Be Completed by the Individual (or the Technical Unit)</h2>
+          <div class="section-body">
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="familyName">Family name</label>
+                <input class="form-control" id="familyName" name="familyName" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="maidenName">Maiden name</label>
+                <input class="form-control" id="maidenName" name="maidenName" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="givenName">Given name</label>
+                <input class="form-control" id="givenName" name="givenName" type="text">
+              </div>
+              <div class="col-md-6">
+                <span class="form-label d-block">Gender</span>
+                <div class="gender-options">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="F">
+                    <label class="form-check-label" for="genderFemale">F</label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="M">
+                    <label class="form-check-label" for="genderMale">M</label>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="dateOfBirth">Date of Birth (dd/mm/yyyy)</label>
+                <input class="form-control" id="dateOfBirth" name="dateOfBirth" type="text" inputmode="numeric" placeholder="dd/mm/yyyy">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="nationality">Nationality</label>
+                <input class="form-control" id="nationality" name="nationality" type="text">
+              </div>
+            </div>
+
+            <div class="subhead">Address &amp; Contact Details</div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="street">Street</label>
+                <input class="form-control" id="street" name="street" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="city">City</label>
+                <input class="form-control" id="city" name="city" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="zipCode">Zip Code</label>
+                <input class="form-control" id="zipCode" name="zipCode" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="districtState">District / State</label>
+                <input class="form-control" id="districtState" name="districtState" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="country">Country</label>
+                <input class="form-control" id="country" name="country" type="text">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="email">Email address</label>
+                <input class="form-control" id="email" name="email" type="email">
+              </div>
+            </div>
+
+            <div class="subhead">Work Assignment</div>
+            <div class="row g-3">
+              <div class="col-md-6">
+                <label class="form-label" for="workDescription">Description of work assignment</label>
+                <textarea class="form-control" id="workDescription" name="workDescription" rows="3"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="workLocation">Location of work assignment</label>
+                <textarea class="form-control" id="workLocation" name="workLocation" rows="3"></textarea>
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="expectedFrom">Expected dates, from</label>
+                <input class="form-control" id="expectedFrom" name="expectedFrom" type="text" placeholder="dd/mm/yyyy">
+              </div>
+              <div class="col-md-6">
+                <label class="form-label" for="expectedTo">To</label>
+                <input class="form-control" id="expectedTo" name="expectedTo" type="text" placeholder="dd/mm/yyyy">
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section plain-section">
+          <h2 class="section-title">2. To Be Completed by the Attending Physician</h2>
+          <div class="section-body">
+            <div class="note">
+              <p class="mb-0"><strong>Instructions:</strong> This medical examination is to assess the individual's general state of health in accordance to his/her medical history, and his/her ability to travel, if required, and to perform the work assignment. N.B.: For drivers, this medical examination will also include visual tests. Please ensure that vaccinations are up-to-date, and that malaria prophylaxis is prescribed if needed and in line with WHO recommendations (http://www.who.int/ith/en/).</p>
+            </div>
+
+            <p>Mr / Mrs / Miss ................................................ has been examined by me. He/she has been found fit to [travel and] perform the work assignment, and the required inoculations and prophylactic medicines for the country to which he/she is required to travel have been done and / or prescribed as applicable.</p>
+
+            <div class="plain-lines">
+              <p><strong>Name of the attending physician who examined the individual:</strong> .......................................................................................................</p>
+              <p><strong>Address:</strong> ............................................................................................................................................................................................................</p>
+              <p>.......................................................................................................................................................................................................................................</p>
+            </div>
+
+            <div class="signature-grid">
+              <div>
+                <strong>Date</strong>
+                <div class="line"></div>
+              </div>
+              <div>
+                <strong>Signature</strong>
+                <div class="line"></div>
+              </div>
+              <div>
+                <strong>Doctor's Stamp</strong>
+                <div class="line"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section plain-section">
+          <h2 class="section-title">3. To Be Completed by the Individual</h2>
+          <div class="section-body">
+            <p>Please electronically complete and return this questionnaire as soon as possible (preferably within 3 days) to Technical Unit.</p>
+            <p>I, Mr / Mrs / Miss ................................................ hereby declare that all information provided by me in the context of the above medical examination is true and complete to the best of my knowledge. I understand that a false statement or a material omission, in particular a failure to disclose a known physical and/or psychological condition, including conditions under investigation, may result in the cancellation of the contract and/or the withdrawal of any offer of a contract with WHO.</p>
+            <p>I further understand that, if any new medical condition or a substantial change in an existing medical condition, appears during the period of validity of this Medical Certificate of Fitness for Work, or if the location of the work assignment changes, it is my responsibility to inform my attending physician and to provide the responsible WHO Technical Unit with a new Certificate of Fitness for Work.</p>
+
+            <div class="signature-grid">
+              <div>
+                <strong>Date</strong>
+                <div class="line"></div>
+              </div>
+              <div>
+                <strong>Signature</strong>
+                <div class="line"></div>
+              </div>
+              <div></div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </main>
+
+
+</div>
+
+
+
+
+
+
+
+<!------------------------------------------- Upload Signed Form Part ------------------------------------------------------------------>
+
+
+
+
+<div class="tab-pane fade page-break" id="uploadSignedFormPart">
+
+    
+  <main class="page">
+    <div class="document">
+      
+      <header class="topbar">
+        <img src="Images/upload.png" alt="World Health Organization logo">
+        <div>
+          <h1>Upload Signed Form</h1>
+          <p class="validity">Please upload the signed form to the designated platform or email it to the responsible WHO Technical Unit as instructed.</p>     
+          
+          <input type="file" class="form-control mt-3" id="signedFormUpload" name="signedFormUpload" accept=".pdf,.jpg,.jpeg,.png"> 
+          <input type="submit" class="btn btn-primary mt-3" value="Upload">
+        </div>
+    </header>
+    </div>
+  </main>
+</div>
+
+    </div>
+
+</body>
 </html>
