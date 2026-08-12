@@ -38,6 +38,11 @@ body {
     background: #f7f7f7
 }
 
+#tblBeneficiary .beneficiary-address-row td {
+    background: #fbfdff;
+    font-size: 0.95rem;
+}
+
 .header-td{
 	 padding:12px 16px;
 	 background-color:#6B7AE0;

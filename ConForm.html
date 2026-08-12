@@ -1,15 +1,30 @@
 <html>
-<title>ConForm</title>
+<title>Forms</title>
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="Styles/SiteStyles.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="Scripts/FormHandler.js"></script>
     <script>
 
     </script>
+    <style>
+        .tab-step-nav {
+            display: flex;
+            justify-content: space-between;
+            gap: 12px;
+            margin-top: 24px;
+            padding-top: 16px;
+            border-top: 1px solid #d7e2ea;
+        }
+
+        .tab-step-nav .btn-next-tab {
+            margin-left: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -40,7 +55,7 @@
 			</div>
 
 			<div class="col-md-8 text-center">
-				<h2 class="site-title">WHO Consultant Details Form</h2>
+				<h2 class="site-title">REQUEST FOR CONSULTANT FORMS</h2>
 			</div>
 			
 			<div class="col-md-2 text-center">
@@ -72,25 +87,31 @@
         
         <li class="nav-item">
         <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part1Sheet">
-        Part 1
+        Form 1
         </button>
         </li>
 
         <li class="nav-item">
         <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part2Sheet">
-        Part 2
+        Form 2
         </button>
         </li>
 
         <li class="nav-item">
         <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part3Sheet">
-        Part 3
+        Form 3
         </button>
         </li>
 
         <li class="nav-item">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#reviewSubmitPart">
+        Validate & Print Form
+        </button>
+        </li>
+
+        <li class="nav-item d-none" id="uploadSignedFormTabItem">
         <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#uploadSignedFormPart">
-        Upload Signed Form
+        Upload & Submit Signed Form
         </button>
         </li>
 
@@ -111,7 +132,18 @@
     <div class="tab-pane fade show active" id="instructionSheet">
         <div class="container">
             <h3>Instructions</h3>
-            <p>Please complete this form and return it duly signed and witnessed to the Responsible Officer in WHO. You may alter your designation of beneficiary at any time by filing a new form which will supersede the previous one.</p>
+            <p>Please complete the following forms and submit the duly filled, signed/stamped documents by uploading forms at “Upload & Submit Signed Form” tab:<br><span class="text-muted" style="font-size: smaller;"><i>Note: The tab “Upload & Submit Signed Form” will be available once all the below forms are completed and validated.</i></span></p>
+            <p>
+              
+                <ul>
+                    <li>Form 1: Designation, Change or Revocation of Beneficiary for Consultants</li>
+                    <li>Form 2: Declaration of Interests(DoI) form - for Non-Staff Workforce</li>
+                    <li>Form 3: Medical Certificate of Fitness for Work</li>
+                </ul>
+            </p>
+            <div class="tab-step-nav no-print">
+                <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part1Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
+            </div>
         </div>
     </div>
 
@@ -119,7 +151,7 @@
 
 
 
-<!------------------------------------------------ Part 1 Form --------------------------------------------------------------------------->
+<!------------------------------------------------ Form 1 Form --------------------------------------------------------------------------->
 
 
 
@@ -138,8 +170,8 @@
             <p class="mt-3"><b><i>Instructions:</i></b><br><i>Please complete this form and return it duly signed and
                     witnessed to the Responsible Officer in WHO. You may alter your designation of beneficiary at any
                     time by filing a new form which will supersede the previous one.</i></p>
-            <p>I, <input class="line-input wide" placeholder="First Name, Middle Name, Family Name"
-                    style="width:400">&nbsp;&nbsp;&nbsp;born on&nbsp;&nbsp;&nbsp;<input type="date" class="line-input">
+            <p>I, <input id="P1FullName" class="line-input wide" placeholder="First Name, Middle Name, Family Name"
+                    style="width:400">&nbsp;&nbsp;&nbsp;born on&nbsp;&nbsp;&nbsp;<input id="P1DateOfBirth" type="date" class="line-input">
             </p>
             <p>Hereby unconditionally designate the person or persons named below as my <b>beneficiary or
                     beneficiaries</b>. This designation applies to the amount standing to my credit at the time of
@@ -172,15 +204,15 @@
         <div class="row">
             <div class="col-8">Written signature of designator in full<div class="signature"></div>
             </div>
-            <div class="col-4"><input type="date" placeholder="Date" class="signature">
+            <div class="col-4"><input id="P1DesgSignDate" type="date" placeholder="Date" class="signature">
             </div>
         </div>
         <h4 class="text-center mt-4">WITNESS</h4>
-        <p>I, the undersigned, having no financial interest in this subject matter, directly or indirectly, hereby certify that this instrument was signed in my presence by the designator on&nbsp;&nbsp;&nbsp;<input type="date" class="line-input">.</p>
+        <p>I, the undersigned, having no financial interest in this subject matter, directly or indirectly, hereby certify that this instrument was signed in my presence by the designator on&nbsp;&nbsp;&nbsp;<input id="P1WitSignDate" type="date" class="line-input">.</p>
         
         <div class="row">
             <div class="col-6">&nbsp;</div>
-            <div class="col-6"><input class="line-input wide" placeholder="Name (BLOCK LETTER)"
+            <div class="col-6"><input id="P1WitName" class="line-input wide" placeholder="Name (BLOCK LETTER)"
                     style="width:400">
             </div>
         </div>
@@ -188,7 +220,11 @@
         <div class="row">
             <div class="col-6">Signature<div class="signature"></div>
             </div>
-            <div class="col-6"><textarea class="line-input wide" placeholder="Address" rows="2" cols="50"></textarea></div>
+            <div class="col-6"><textarea id="P1WitAddress" class="line-input wide" placeholder="Address" rows="2" cols="50"></textarea></div>
+            </div>
+            <div class="tab-step-nav no-print">
+                <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#instructionSheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+                <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part2Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
             </div>
         </div>
     </div>
@@ -236,6 +272,11 @@
                             <label>Share *</label>
                             <input type="number" id="txtShare" min="0" max="100" class="form-control">
                         </div>
+
+                        <div class="col-md-12 mt-3">
+                            <label>Address</label>
+                            <textarea id="txtBenAddress" class="form-control" rows="3"></textarea>
+                        </div>
                     </div>
 
                 </div>
@@ -264,7 +305,7 @@
 
 
 
-<!------------------------------------------------- Part 2 Form -------------------------------------------------------------->
+<!------------------------------------------------- Form 2 Form -------------------------------------------------------------->
 
 
 
@@ -301,19 +342,19 @@
               <label class="form-label fw-semibold" for="name">Name:</label>
               
             </div>
-            <div class="col-6"><input class="form-control" id="name" name="name" type="text"></div>
+            <div class="col-6"><input id="P2Name" class="form-control" id="name" name="name" type="text"></div>
             <div class="col-3"></div>
             <div class="col-3">
               <label class="form-label fw-semibold" for="affiliatedInstitutions">Affiliated institution(s):</label>
               
             </div>
-            <div class="col-6"><input class="form-control" id="affiliatedInstitutions" name="affiliatedInstitutions" type="text"></div>
+            <div class="col-6"><input id="P2AffiInstitue" class="form-control" id="affiliatedInstitutions" name="affiliatedInstitutions" type="text"></div>
             <div class="col-3"></div>
             <div class="col-3">
               <label class="form-label fw-semibold" for="email">Email:</label>
               
             </div>
-            <div class="col-6"><input class="form-control" id="email" name="email" type="email"></div>
+            <div class="col-6"><input class="form-control" id="P2Email" name="email" type="email"></div>
             <div class="col-3"></div>
         </section>
 
@@ -323,7 +364,7 @@
             <div class="row g-3">
               <div class="col-lg-6">
                 <label class="form-label fw-semibold" for="contractType">Type of contract</label>
-                <select class="form-select" id="contractType" name="contractType">
+                <select class="form-select" id="P2ContractType" name="contractType">
                   <option value="">Select one</option>
                   <option>Intern</option>
                   <option>Consultant (remunerated or nil-remuneration consultant contracts)</option>
@@ -335,26 +376,26 @@
                 <label class="form-label fw-semibold d-block">The Terms of Reference (ToR) have been received</label>
                 <div class="d-flex gap-4">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="torReceived" id="torYes" value="yes">
-                    <label class="form-check-label" for="torYes">Yes</label>
+                    <input class="form-check-input" type="radio" name="P2TORRecv" id="P2TORRecvYes" value="yes">
+                    <label class="form-check-label" for="P2TORRecvYes">Yes</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="torReceived" id="torNo" value="no">
-                    <label class="form-check-label" for="torNo">No</label>
+                    <input class="form-check-input" type="radio" name="P2TORRecv" id="P2TORRecvNo" value="no">
+                    <label class="form-check-label" for="P2TORRecvNo">No</label>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
-                <label class="form-label fw-semibold" for="duration">Planned duration (days/months)</label>
-                <input class="form-control" id="duration" name="duration" type="text">
+                <label class="form-label fw-semibold" for="P2PlannedDuration">Planned duration (days/months)</label>
+                <input class="form-control" id="P2PlannedDuration" name="P2PlannedDuration" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label fw-semibold" for="workPattern">Full time/part time</label>
-                <input class="form-control" id="workPattern" name="workPattern" type="text">
+                <label class="form-label fw-semibold" for="P2FullPartTime">Full time/part time</label>
+                <input class="form-control" id="P2FullPartTime" name="P2FullPartTime" type="text">
               </div>
               <div class="col-12">
-                <label class="form-label fw-semibold" for="workTitle">Title of the work to be performed as in the ToR, including brief description</label>
-                <textarea class="form-control" id="workTitle" name="workTitle"></textarea>
+                <label class="form-label fw-semibold" for="P2WorkTitle">Title of the work to be performed as in the ToR, including brief description</label>
+                <textarea class="form-control" id="P2WorkTitle" name="P2WorkTitle"></textarea>
               </div>
             </div>
           </div>
@@ -374,7 +415,7 @@
               <li>other engagements with WHO/PAHO (e.g. other parallel contractual arrangements, or participation as an expert in a WHO expert advisory group or expert committee) or related entities (e.g. within the UN system or partner organizations such as Collaborating Centres or non-State actors in official relations with WHO)</li>
             </ol>
             <br>
-            <p>As a result of WHO’s strong stance against tobacco use and the arms industry, WHO non-staff workforce should disclose whether they, or their immediate family members have any relationship with any part of what is referred to as “the tobacco” or arms industries.</p>
+            <p>As a result of WHO's strong stance against tobacco use and the arms industry, WHO non-staff workforce should disclose whether they, or their immediate family members have any relationship with any part of what is referred to as “the tobacco” or arms industries.</p>
           </div>
           
         </section>
@@ -391,8 +432,8 @@
               <div class="question-grid">
                 <p class="question-text">1. Do you have any close personal relationships (e.g. partnership) and/or family relationship with a member of the WHO workforce (staff or non-staff)?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1yes" value="yes"><label class="form-check-label" for="q1yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q1" id="q1no" value="no"><label class="form-check-label" for="q1no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q1" id="P2Q1Yes" value="Yes"><label class="form-check-label" for="P2Q1Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q1" id="P2Q1No" value="No"><label class="form-check-label" for="P2Q1No">No</label></div>
                 </div>
               </div>
             </div>
@@ -407,8 +448,8 @@
               <div class="question-grid">
                 <p class="question-text">2.1. Be under any other employment contract, including formal leave of absence from your current employer?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2yes" value="yes"><label class="form-check-label" for="q2yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q2" id="q2no" value="no"><label class="form-check-label" for="q2no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q21" id="P2Q21Yes" value="Yes"><label class="form-check-label" for="P2Q21Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q21" id="P2Q21No" value="No"><label class="form-check-label" for="P2Q21No">No</label></div>
                 </div>
               </div>
             </div>
@@ -416,8 +457,8 @@
               <div class="question-grid">
                 <p class="question-text">2.2. receive any other in-kind or financial support (e.g. grant, bursary, scholarship, payment of travel or living costs, salary) from any entity or organization</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3yes" value="yes"><label class="form-check-label" for="q3yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q3" id="q3no" value="no"><label class="form-check-label" for="q3no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q22" id="P2Q22Yes" value="Yes"><label class="form-check-label" for="P2Q22Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q22" id="P2Q22No" value="No"><label class="form-check-label" for="P2Q22No">No</label></div>
                 </div>
               </div>
             </div>
@@ -425,8 +466,8 @@
               <div class="question-grid">
                 <p class="question-text">2.3.	be engaged in any other activity with WHO  in any location, including other contractual engagement, participation in WHO expert committees, panel meetings, or other advisory processes?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4yes" value="yes"><label class="form-check-label" for="q4yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q4" id="q4no" value="no"><label class="form-check-label" for="q4no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q23" id="P2Q23Yes" value="Yes"><label class="form-check-label" for="P2Q23Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q23" id="P2Q23No" value="No"><label class="form-check-label" for="P2Q23No">No</label></div>
                 </div>
               </div>
             </div>
@@ -435,8 +476,8 @@
               <div class="question-grid">
                 <p class="question-text">3.1. remuneration (including employment, consulting, and other services such as technical or other advisor)?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5yes" value="yes"><label class="form-check-label" for="q5yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q5" id="q5no" value="no"><label class="form-check-label" for="q5no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q31" id="P2Q31Yes" value="Yes"><label class="form-check-label" for="P2Q31Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q31" id="P2Q31No" value="No"><label class="form-check-label" for="P2Q31No">No</label></div>
                 </div>
               </div>
             </div>
@@ -444,8 +485,8 @@
               <div class="question-grid">
                 <p class="question-text">3.2.	support, either directly or through your affiliated institution(s) (including research grants, sponsorships, or non-monetary support such as equipment, facilities, research assistants, paid travel valued at more than USD 1,000 overall)?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6yes" value="yes"><label class="form-check-label" for="q6yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q6" id="q6no" value="no"><label class="form-check-label" for="q6no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q32" id="P2Q32Yes" value="Yes"><label class="form-check-label" for="P2Q32Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q32" id="P2Q32No" value="No"><label class="form-check-label" for="P2Q32No">No</label></div>
                 </div>
               </div>
             </div>
@@ -460,8 +501,8 @@
               <div class="question-grid">
                 <p class="question-text">4.1. Stocks, bonds, stock options, or other securities.</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7yes" value="yes"><label class="form-check-label" for="q7yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q7" id="q7no" value="no"><label class="form-check-label" for="q7no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q41" id="P2Q41Yes" value="Yes"><label class="form-check-label" for="P2Q41Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q41" id="P2Q41No" value="No"><label class="form-check-label" for="P2Q41No">No</label></div>
                 </div>
               </div>
             </div>
@@ -469,8 +510,8 @@
               <div class="question-grid">
                 <p class="question-text">4.2. Commercial business interests (e.g. including proprietorships, partnerships, joint ventures, board memberships, or controlling interest in a company.)</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8yes" value="yes"><label class="form-check-label" for="q8yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q8" id="q8no" value="no"><label class="form-check-label" for="q8no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q42" id="P2Q42Yes" value="Yes"><label class="form-check-label" for="P2Q42Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q42" id="P2Q42No" value="No"><label class="form-check-label" for="P2Q42No">No</label></div>
                 </div>
               </div>
             </div>
@@ -485,8 +526,8 @@
               <div class="question-grid">
                 <p class="question-text">5.1.	Patents, trademarks, or copyrights including pending applications</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9yes" value="yes"><label class="form-check-label" for="q9yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q9" id="q9no" value="no"><label class="form-check-label" for="q9no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q51" id="P2Q51Yes" value="Yes"><label class="form-check-label" for="P2Q51Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q51" id="P2Q51No" value="No"><label class="form-check-label" for="P2Q51No">No</label></div>
                 </div>
               </div>
             </div>
@@ -494,8 +535,8 @@
               <div class="question-grid">
                 <p class="question-text">5.2.	Proprietary interest/know-how in a substance, technology, data or process</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10yes" value="yes"><label class="form-check-label" for="q10yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q10" id="q10no" value="no"><label class="form-check-label" for="q10no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q52" id="P2Q52Yes" value="Yes"><label class="form-check-label" for="P2Q52Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q52" id="P2Q52No" value="No"><label class="form-check-label" for="P2Q52No">No</label></div>
                 </div>
               </div>
             </div>
@@ -509,8 +550,8 @@
               <div class="question-grid">
                 <p class="question-text">6.	Within the past four (4) years, have you provided any experts opinion or testimony related to the subject matter of work to be undertaken for WHO as part of a regulatory, legislative or judicial process?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11yes" value="yes"><label class="form-check-label" for="q11yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q11" id="q11no" value="no"><label class="form-check-label" for="q11no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q6" id="P2Q6Yes" value="Yes"><label class="form-check-label" for="P2Q6Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q6" id="P2Q6No" value="No"><label class="form-check-label" for="P2Q6No">No</label></div>
                 </div>
               </div>
             </div>
@@ -518,8 +559,8 @@
               <div class="question-grid">
                 <p class="question-text">7.	Within the past four (4) years, have you held an office or other position, paid or unpaid, where you publicly represented interests or defended a position related to the subject of the work?	</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12yes" value="yes"><label class="form-check-label" for="q12yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q12" id="q12no" value="no"><label class="form-check-label" for="q12no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q7" id="P2Q7Yes" value="Yes"><label class="form-check-label" for="P2Q7Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q7" id="P2Q7No" value="No"><label class="form-check-label" for="P2Q7No">No</label></div>
                 </div>
               </div>
             </div>
@@ -527,8 +568,8 @@
               <div class="question-grid">
                 <p class="question-text">8.	Is there any other aspect of your background or present circumstances not addressed above that might be perceived as affecting your objectivity or independence?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13yes" value="yes"><label class="form-check-label" for="q13yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q13" id="q13no" value="no"><label class="form-check-label" for="q13no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q8" id="P2Q8Yes" value="Yes"><label class="form-check-label" for="P2Q8Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q8" id="P2Q8No" value="No"><label class="form-check-label" for="P2Q8No">No</label></div>
                 </div>
               </div>
             </div>
@@ -542,8 +583,8 @@
               <div class="question-grid">
                 <p class="question-text">9.	If not already disclosed above, have you worked for the competitor of a product or service that is the subject of the work or will your engagement with WHO enable you to obtain access to a competitor’s confidential proprietary information, or create for you a personal, professional, financial or business competitive advantage including as part of a WHO procurement process?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14yes" value="yes"><label class="form-check-label" for="q14yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q14" id="q14no" value="no"><label class="form-check-label" for="q14no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q9" id="P2Q9Yes" value="Yes"><label class="form-check-label" for="P2Q9Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q9" id="P2Q9No" value="No"><label class="form-check-label" for="P2Q9No">No</label></div>
                 </div>
               </div>
             </div>
@@ -551,8 +592,8 @@
               <div class="question-grid">
                 <p class="question-text">10.	If not already disclosed above, do you have any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO  or which has a commercial interest in the work of WHO, or a common area of activity with WHO?</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15yes" value="yes"><label class="form-check-label" for="q15yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q15" id="q15no" value="no"><label class="form-check-label" for="q15no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q10" id="P2Q10Yes" value="Yes"><label class="form-check-label" for="P2Q10Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q10" id="P2Q10No" value="No"><label class="form-check-label" for="P2Q10No">No</label></div>
                 </div>
               </div>
             </div>
@@ -560,8 +601,8 @@
               <div class="question-grid">
                 <p class="question-text">11.	Have you ever been subject to any administrative or disciplinary proceedings for misconduct which resulted in a disciplinary measure from any Organization and/or have you ever been debarred, suspended, or excluded from any regulatory, professional body, Organization of the UN system or international financial institution? If yes, please provide further information in the section below.</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16yes" value="yes"><label class="form-check-label" for="q16yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q16" id="q16no" value="no"><label class="form-check-label" for="q16no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q11" id="P2Q11Yes" value="Yes"><label class="form-check-label" for="P2Q11Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q11" id="P2Q11No" value="No"><label class="form-check-label" for="P2Q11No">No</label></div>
                 </div>
               </div>
             </div>
@@ -569,8 +610,8 @@
               <div class="question-grid">
                 <p class="question-text">12.	Have you ever been arrested, indicted, or summoned into a court as a defendant in a criminal proceeding, or convicted, fined, imprisoned for the violation of any law (excluding minor traffic violations)? If yes, please provide further information in the section below.</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17yes" value="yes"><label class="form-check-label" for="q17yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q17" id="q17no" value="no"><label class="form-check-label" for="q17no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q12" id="P2Q12Yes" value="Yes"><label class="form-check-label" for="P2Q12Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q12" id="P2Q12No" value="No"><label class="form-check-label" for="P2Q12No">No</label></div>
                 </div>
               </div>
             </div>
@@ -586,8 +627,8 @@
               <div class="question-grid">
                 <p class="question-text">13. Tobacco industry.</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18yes" value="yes"><label class="form-check-label" for="q18yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q18" id="q18no" value="no"><label class="form-check-label" for="q18no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q13" id="P2Q13Yes" value="Yes"><label class="form-check-label" for="P2Q13Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q13" id="P2Q13No" value="No"><label class="form-check-label" for="P2Q13No">No</label></div>
                 </div>
               </div>
             </div>
@@ -595,8 +636,8 @@
               <div class="question-grid">
                 <p class="question-text">14. Arms industry.</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19yes" value="yes"><label class="form-check-label" for="q19yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q19" id="q19no" value="no"><label class="form-check-label" for="q19no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q14" id="P2Q14Yes" value="Yes"><label class="form-check-label" for="P2Q14Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q14" id="P2Q14No" value="No"><label class="form-check-label" for="P2Q14No">No</label></div>
                 </div>
               </div>
             </div>
@@ -604,8 +645,8 @@
               <div class="question-grid">
                 <p class="question-text">15. Pharmaceutical industry.</p>
                 <div class="answer-options">
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20yes" value="yes"><label class="form-check-label" for="q20yes">Yes</label></div>
-                  <div class="form-check"><input class="form-check-input" type="radio" name="q20" id="q20no" value="no"><label class="form-check-label" for="q20no">No</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q15" id="P2Q15Yes" value="Yes"><label class="form-check-label" for="P2Q15Yes">Yes</label></div>
+                  <div class="form-check"><input class="form-check-input" type="radio" name="P2Q15" id="P2Q15No" value="No"><label class="form-check-label" for="P2Q15No">No</label></div>
                 </div>
               </div>
             </div>
@@ -630,18 +671,18 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td><textarea class="form-control" name="explainDetails"></textarea></td>
-                    <td><textarea class="form-control" name="explainEntity"></textarea></td>
-                    <td><textarea class="form-control" name="explainOwner"></textarea></td>
-                    <td><textarea class="form-control" name="explainValue"></textarea></td>
-                    <td><textarea class="form-control" name="explainStatus"></textarea></td>
-                    <td><textarea class="form-control" name="explainOther"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainDetail" id="P2ExplainDetail"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgName" name="P2ExplainOrgName"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongs" name="P2ExplainBelongs"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValue" id="P2ExplainValue"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterest" id="P2ExplainInterest"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOther" id="P2ExplainOther"></textarea></td>
                   </tr>
                 </tbody>
               </table>
             </div>
-            <label class="form-label fw-semibold" for="additionalProceedings">Nos. 6-15: Please provide additional information if “yes” in any of these sections (e.g. parties involved, time frame, type of proceeding etc.).</label>
-            <textarea class="form-control" id="additionalProceedings" name="additionalProceedings" rows="5"></textarea>
+            <label class="form-label fw-semibold" for="P2ExplainAddProceedings">Nos. 6-15: Please provide additional information if “yes” in any of these sections (e.g. parties involved, time frame, type of proceeding etc.).</label>
+            <textarea class="form-control" id="P2ExplainAddProceedings" name="P2ExplainAddProceedings" rows="5"></textarea>
           </div>
         </section>
 
@@ -652,16 +693,16 @@
             <p>Should there be any change to the above information, I will promptly notify the responsible staff of WHO and complete a new declaration of interests form that describes the changes. This includes any change that occurs before or during my collaboration with WHO and through the period up to the publication of the final results or completion of the activity concerned.</p>
             <div class="signature-row">
               <div>
-                <label class="form-label fw-semibold" for="applicantDate">Date</label>
-                <input class="form-control" type="date" id="applicantDate" name="applicantDate">
+                <label class="form-label fw-semibold" for="P2DecDate">Date</label>
+                <input class="form-control" type="date" id="P2DecDate" name="P2DecDate">
               </div>
               <div>
-                <label class="form-label fw-semibold" for="applicantName">Name</label>
-                <input class="form-control" type="text" id="applicantName" name="applicantName">
+                <label class="form-label fw-semibold" for="P2DecName">Name</label>
+                <input class="form-control" type="text" id="P2DecName" name="P2DecName">
               </div>
               <div>
-                <label class="form-label fw-semibold" for="applicantSignature">Signature</label>
-                <input class="form-control" type="text" id="applicantSignature" name="applicantSignature">
+                <label class="form-label fw-semibold" for="P2DecSign">Signature</label>
+                <input class="form-control" type="text" id="P2DecSign" name="P2DecSign">
               </div>
             </div>
           </div>
@@ -673,55 +714,59 @@
             <p class="fw-semibold">Part to be completed by the responsible officer. Please tick the relevant box(es).</p>
             <p>I have reviewed the form in conjunction with the Stellis Profile/CV and publicly available profile of the candidate, and have undertaken a background review in accordance with Annex 1  and:</p>
             <div class="officer-check form-check">
-              <input class="form-check-input" type="checkbox" id="officerNoDisclosure" name="officerNoDisclosure">
-              <label class="form-check-label" for="officerNoDisclosure">1. No disclosure(s) has been made and nothing has been identified that would prevent the hiring of the envisaged candidate. </label>
+              <input class="form-check-input" type="checkbox" id="P2ResOffRev1" name="P2ResOffRev1">
+              <label class="form-check-label" for="P2ResOffRev1">1. No disclosure(s) has been made and nothing has been identified that would prevent the hiring of the envisaged candidate. </label>
             </div>
             <div class="officer-check form-check">
-              <input class="form-check-input" type="checkbox" id="officerNotRelevant" name="officerNotRelevant">
-              <label class="form-check-label" for="officerNotRelevant">2. It has been determined that the disclosure(s) is/are not relevant for the envisaged work and, in consultation with the Department Director/Unit Head , it has been determined that there is nothing preventing the envisaged candidate from being hired. A note for the record reflecting this assessment has been prepared.</label>
+              <input class="form-check-input" type="checkbox" id="P2ResOffRev2" name="P2ResOffRev2">
+              <label class="form-check-label" for="P2ResOffRev2">2. It has been determined that the disclosure(s) is/are not relevant for the envisaged work and, in consultation with the Department Director/Unit Head , it has been determined that there is nothing preventing the envisaged candidate from being hired. A note for the record reflecting this assessment has been prepared.</label>
             </div>
             <div class="officer-check form-check">
-              <input class="form-check-input" type="checkbox" id="officerEthics" name="officerEthics">
-              <label class="form-check-label" for="officerEthics">3. It was determined that due to the interests disclosed further guidance from the Ethics Unit, CRE (CRE/Ethics Unit)  was needed in order to assess the disclosures made. The disclosures were discussed with the CRE/Ethics Unit and the following advice was provided</label>
+              <input class="form-check-input" type="checkbox" id="P2ResOffRev3" name="P2ResOffRev3">
+              <label class="form-check-label" for="P2ResOffRev3">3. It was determined that due to the interests disclosed further guidance from the Ethics Unit, CRE (CRE/Ethics Unit)  was needed in order to assess the disclosures made. The disclosures were discussed with the CRE/Ethics Unit and the following advice was provided</label>
             </div>
-            <label class="form-label fw-semibold" for="ethicsAdvice">Advice provided by the CRE/Ethics Unit</label>
-            <textarea class="form-control mb-3" id="ethicsAdvice" name="ethicsAdvice"></textarea>
+            <label class="form-label fw-semibold" for="P2ResOffRevAdvice">Advice provided by the CRE/Ethics Unit</label>
+            <textarea class="form-control mb-3" id="P2ResOffRevAdvice" name="P2ResOffRevAdvice"></textarea>
 
             <p>As the final decision on whether to proceed, or not, with the hiring is that of the Department Director/Unit Head , the advice of the CRE/Ethics Unit was taken into consideration and it was decided by the Department Director/Unit Head  that:</p>
             <div class="row g-3">
               <div class="col-12">
-                <label class="form-label fw-semibold" for="hiringProceed">The hiring can proceed as</label>
-                <textarea class="form-control" id="hiringProceed" name="hiringProceed"></textarea>
+                <label class="form-label fw-semibold" for="P2ResOffRevHiring">The hiring can proceed as</label>
+                <textarea class="form-control" id="P2ResOffRevHiring" name="P2ResOffRevHiring"></textarea>
               </div>
               <div class="col-12">
-                <label class="form-label fw-semibold" for="mitigation">The disclosed interest can be mitigated by</label>
-                <textarea class="form-control" id="mitigation" name="mitigation"></textarea>
+                <label class="form-label fw-semibold" for="P2ResOffRevMitigated">The disclosed interest can be mitigated by</label>
+                <textarea class="form-control" id="P2ResOffRevMitigated" name="P2ResOffRevMitigated"></textarea>
               </div>
             </div>
             <div class="officer-check form-check mt-3">
-              <input class="form-check-input" type="checkbox" id="officerCannotHire" name="officerCannotHire">
-              <label class="form-check-label" for="officerCannotHire">The interest(s) disclosed is/are too significant and not compatible with WHO. The proposed candidate cannot be hired.</label>
+              <input class="form-check-input" type="checkbox" id="P2ResOffRevNotComp" name="P2ResOffRevNotComp">
+              <label class="form-check-label" for="P2ResOffRevNotComp">The interest(s) disclosed is/are too significant and not compatible with WHO. The proposed candidate cannot be hired.</label>
             </div>
             <div class="officer-check form-check">
-              <input class="form-check-input" type="checkbox" id="officerNoteShared" name="officerNoteShared">
-              <label class="form-check-label" for="officerNoteShared">A note for the record reflecting this assessment has been prepared and a copy shared with the CRE/Ethics Unit.</label>
+              <input class="form-check-input" type="checkbox" id="P2ResOffRevNFR" name="P2ResOffRevNFR">
+              <label class="form-check-label" for="P2ResOffRevNFR">A note for the record reflecting this assessment has been prepared and a copy shared with the CRE/Ethics Unit.</label>
             </div>
             <div class="signature-row mt-3">
               <div>
-                <label class="form-label fw-semibold" for="officerDate">Date</label>
-                <input class="form-control" type="date" id="officerDate" name="officerDate">
+                <label class="form-label fw-semibold" for="P2ResOffRevDate">Date</label>
+                <input class="form-control" type="date" id="P2ResOffRevDate" name="P2ResOffRevDate">
               </div>
               <div>
-                <label class="form-label fw-semibold" for="officerName">Name</label>
-                <input class="form-control" type="text" id="officerName" name="officerName">
+                <label class="form-label fw-semibold" for="P2ResOffRevName">Name</label>
+                <input class="form-control" type="text" id="P2ResOffRevName" name="P2ResOffRevName">
               </div>
               <div>
-                <label class="form-label fw-semibold" for="officerSignature">Signature</label>
-                <input class="form-control" type="text" id="officerSignature" name="officerSignature">
+                <label class="form-label fw-semibold" for="P2ResOffRevSign">Signature</label>
+                <input class="form-control" type="text" id="P2ResOffRevSign" name="P2ResOffRevSign">
               </div>
             </div>
           </div>
         </section>
+        <div class="tab-step-nav no-print">
+            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part1Sheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+            <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part3Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
+        </div>
       </form>
     </div>
   </main>
@@ -736,7 +781,7 @@
 
 
 
-<!------------------------------------------- PART 3 Form ------------------------------------------------------------------>
+<!------------------------------------------- Form 3 Form ------------------------------------------------------------------>
 
 
 
@@ -763,85 +808,85 @@
           <div class="section-body">
             <div class="row g-3">
               <div class="col-md-6">
-                <label class="form-label" for="familyName">Family name</label>
-                <input class="form-control" id="familyName" name="familyName" type="text">
+                <label class="form-label" for="P3FamilyName">Family name</label>
+                <input class="form-control" id="P3FamilyName" name="P3FamilyName" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="maidenName">Maiden name</label>
-                <input class="form-control" id="maidenName" name="maidenName" type="text">
+                <label class="form-label" for="P3MaidenName">Maiden name</label>
+                <input class="form-control" id="P3MaidenName" name="P3MaidenName" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="givenName">Given name</label>
-                <input class="form-control" id="givenName" name="givenName" type="text">
+                <label class="form-label" for="P3GivenName">Given name</label>
+                <input class="form-control" id="P3GivenName" name="P3GivenName" type="text">
               </div>
               <div class="col-md-6">
                 <span class="form-label d-block">Gender</span>
                 <div class="gender-options">
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="genderFemale" value="F">
-                    <label class="form-check-label" for="genderFemale">F</label>
+                    <input class="form-check-input" type="radio" name="P3Gender" id="P3GenderFemale" value="F">
+                    <label class="form-check-label" for="P3GenderFemale">F</label>
                   </div>
                   <div class="form-check">
-                    <input class="form-check-input" type="radio" name="gender" id="genderMale" value="M">
-                    <label class="form-check-label" for="genderMale">M</label>
+                    <input class="form-check-input" type="radio" name="P3Gender" id="P3GenderMale" value="M">
+                    <label class="form-check-label" for="P3GenderMale">M</label>
                   </div>
                 </div>
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="dateOfBirth">Date of Birth (dd/mm/yyyy)</label>
-                <input class="form-control" id="dateOfBirth" name="dateOfBirth" type="text" inputmode="numeric" placeholder="dd/mm/yyyy">
+                <label class="form-label" for="P3DateOfBirth">Date of Birth (dd/mm/yyyy)</label>
+                <input class="form-control" id="P3DateOfBirth" name="P3DateOfBirth" type="text" inputmode="numeric" placeholder="dd/mm/yyyy">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="nationality">Nationality</label>
-                <input class="form-control" id="nationality" name="nationality" type="text">
+                <label class="form-label" for="P3Nationality">Nationality</label>
+                <input class="form-control" id="P3Nationality" name="P3Nationality" type="text">
               </div>
             </div>
 
             <div class="subhead">Address &amp; Contact Details</div>
             <div class="row g-3">
               <div class="col-md-6">
-                <label class="form-label" for="street">Street</label>
-                <input class="form-control" id="street" name="street" type="text">
+                <label class="form-label" for="P3Street">Street</label>
+                <input class="form-control" id="P3Street" name="P3Street" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="city">City</label>
-                <input class="form-control" id="city" name="city" type="text">
+                <label class="form-label" for="P3City">City</label>
+                <input class="form-control" id="P3City" name="P3City" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="zipCode">Zip Code</label>
-                <input class="form-control" id="zipCode" name="zipCode" type="text">
+                <label class="form-label" for="P3ZipCode">Zip Code</label>
+                <input class="form-control" id="P3ZipCode" name="P3ZipCode" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="districtState">District / State</label>
-                <input class="form-control" id="districtState" name="districtState" type="text">
+                <label class="form-label" for="P3State">District / State</label>
+                <input class="form-control" id="P3State" name="P3State" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="country">Country</label>
-                <input class="form-control" id="country" name="country" type="text">
+                <label class="form-label" for="P3Country">Country</label>
+                <input class="form-control" id="P3Country" name="P3Country" type="text">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="email">Email address</label>
-                <input class="form-control" id="email" name="email" type="email">
+                <label class="form-label" for="P3Email">Email address</label>
+                <input class="form-control" id="P3Email" name="P3Email" type="email">
               </div>
             </div>
 
             <div class="subhead">Work Assignment</div>
             <div class="row g-3">
               <div class="col-md-6">
-                <label class="form-label" for="workDescription">Description of work assignment</label>
-                <textarea class="form-control" id="workDescription" name="workDescription" rows="3"></textarea>
+                <label class="form-label" for="P3WADescription">Description of work assignment</label>
+                <textarea class="form-control" id="P3WADescription" name="P3WADescription" rows="3"></textarea>
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="workLocation">Location of work assignment</label>
-                <textarea class="form-control" id="workLocation" name="workLocation" rows="3"></textarea>
+                <label class="form-label" for="P3WALocation">Location of work assignment</label>
+                <textarea class="form-control" id="P3WALocation" name="P3WALocation" rows="3"></textarea>
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="expectedFrom">Expected dates, from</label>
-                <input class="form-control" id="expectedFrom" name="expectedFrom" type="text" placeholder="dd/mm/yyyy">
+                <label class="form-label" for="P3ExpFromDate">Expected dates, from</label>
+                <input class="form-control" id="P3ExpFromDate" name="P3ExpFromDate" type="text" placeholder="dd/mm/yyyy">
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="expectedTo">To</label>
-                <input class="form-control" id="expectedTo" name="expectedTo" type="text" placeholder="dd/mm/yyyy">
+                <label class="form-label" for="P3ExpToDate">To</label>
+                <input class="form-control" id="P3ExpToDate" name="P3ExpToDate" type="text" placeholder="dd/mm/yyyy">
               </div>
             </div>
           </div>
@@ -899,6 +944,10 @@
             </div>
           </div>
         </section>
+        <div class="tab-step-nav no-print">
+            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part2Sheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+            <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#reviewSubmitPart">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
+        </div>
       </form>
     </div>
   </main>
@@ -923,21 +972,101 @@
   <main class="page">
     <div class="document">
       
+
       <header class="topbar">
         <img src="Images/upload.png" alt="World Health Organization logo">
         <div>
-          <h1>Upload Signed Form</h1>
-          <p class="validity">Please upload the signed form to the designated platform or email it to the responsible WHO Technical Unit as instructed.</p>     
+          <div id="uploadMessage" class="alert d-none" role="alert"></div>
+          <h1>Upload & Submit Signed Form</h1>
+          <p class="validity">Please upload the signed forms and click on Submit.</p>     
           
-          <input type="file" class="form-control mt-3" id="signedFormUpload" name="signedFormUpload" accept=".pdf,.jpg,.jpeg,.png"> 
-          <input type="submit" class="btn btn-primary mt-3" value="Upload">
+          <input type="file" class="form-control mt-3" id="signedFormUpload" name="signedFormUpload" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" required> 
+          <button type="button" id="uploadSignedFormBtn" class="btn btn-primary mt-3">
+            Upload
+        </button>
+          <div class="tab-step-nav no-print">
+            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#reviewSubmitPart"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+            
+            <button type="button" id="btnSubmitFinal" class="btn btn-primary" disabled>
+                Submit
+            </button>
+          </div>
+          
         </div>
     </header>
     </div>
   </main>
 </div>
 
+
+
+
+
+
+<!------------------------------------------- Final Review & Submit Part ------------------------------------------------------------------>
+
+
+
+
+
+<div class="tab-pane fade page-break" id="reviewSubmitPart">
+    <main class="page">
+        <div class="document">
+            <section class="content">
+                <h1>Validate & Print Form</h1>
+
+                <div class="alert alert-info">
+                    Please validate the form before printing. Print and upload will be available only after all required data is valid.
+                </div>
+
+                <h4>Validation Summary</h4>
+                <div id="reviewValidationSummary" class="alert alert-danger d-none"></div>
+
+                <div class="mt-4 d-flex gap-2 justify-content-between">
+                    <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part3Sheet">
+                        <i class="bi bi-arrow-left-circle-fill me-1"></i>Previous
+                    </button>
+                    
+                    <div>
+                        <button type="button" id="btnSaveForLater" class="btn btn-warning">
+                            Save
+                        </button>
+
+                        <button type="button" id="btnPrintPdf" class="btn btn-outline-primary d-none">
+                             <i class="bi bi-file-earmark-pdf-fill me-1"></i>Print to PDF
+                        </button>
+
+                        <button type="button" id="btnGoToUploadSignedForm" class="btn btn-primary btn-next-tab d-none" data-next-tab="#uploadSignedFormPart">
+                            Upload & Submit Signed Form<i class="bi bi-arrow-right-circle-fill ms-1"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</div>
+
+
+
+
     </div>
+
+
+
+<script>
+    $(document).on("click", ".btn-next-tab, .btn-prev-tab", function () {
+        const targetTab = $(this).data("next-tab") || $(this).data("prev-tab");
+        const tabButton = document.querySelector('#sheetTabs button[data-bs-target="' + targetTab + '"]');
+
+        if (!tabButton) {
+            console.warn("Tab button not found for target:", targetTab);
+            return;
+        }
+
+        bootstrap.Tab.getOrCreateInstance(tabButton).show();
+        window.scrollTo({ top: $("#sheetTabs").offset().top, behavior: "smooth" });
+    });
+</script>
 
 </body>
 </html>

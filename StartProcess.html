@@ -101,11 +101,13 @@
 
       setLoading("#requestOtpBtn", true, "Send OTP", "Sending...");
 
+      var conId = GetQueryStringValue("ConID");
+
       $.ajax({
         url: GENERATE_OTP_FLOW_URL,
         method: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ email: email, OTPMethod: "Generate", OTP: "", RequestID: "1" }),
+        data: JSON.stringify({ email: email, OTPMethod: "Generate", OTP: "", RequestID: conId }),
         success: function (response) {
           if (response && response.success === false) {
             showAlert("danger", response.message || "Unable to send OTP.");
@@ -132,6 +134,11 @@
       });
     }
 
+    function GetQueryStringValue(name) {
+      var params = new URLSearchParams(window.location.search);
+      return params.get(name) || "";
+  }
+
     function validateOtp() {
       const email = $("#email").val().trim();
       const otp = $("#otp").val().trim();
@@ -148,16 +155,20 @@
 
       setLoading("#validateOtpBtn", true, "Validate OTP", "Validating...");
 
+      var conId = GetQueryStringValue("ConID");
+
       $.ajax({
         url: VALIDATE_OTP_FLOW_URL,
         method: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ email: email, otp: otp, OTPMethod: "Validate", RequestID: "1" }),
+        data: JSON.stringify({ email: email, otp: otp, OTPMethod: "Validate", RequestID: conId }),
         success: function (response) {
           if (response && response.success === true) {
             showAlert("success", response.message || "OTP validated successfully.");
             $("#requestOtpBtn, #validateOtpBtn, #resendOtpBtn").prop("disabled", true);
             $("#email, #otp").prop("readonly", true);
+            
+            window.location.href = "ConForm.html?ConID=" + conId + "&token=" + response.token; // Redirect to form after successful validation
           } else {
             showAlert("danger", response.message || "Invalid or expired OTP.");
             setLoading("#validateOtpBtn", false, "Validating", "Validate OTP");
