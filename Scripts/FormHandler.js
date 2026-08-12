@@ -288,7 +288,7 @@ let reviewStatus = {
                     conId: conId,
                     fileName: file.name,
                     fileContentBase64: fileContentBase64,
-                    contentType: file.type || "application/octet-stream"
+                    contentType: file.type || "application/octet-stream"  
                 }),
                 success: function (response) {
                 if (response && response.success === false) {
