@@ -456,7 +456,7 @@ function refreshReviewSubmitStatus() {
     reviewStatus.validationPassed = isFormValid;
     //reviewStatus.validationPassed = true;
 
-    if (isFormValid) {
+    if (isFormValid) {   
         $("#reviewValidationSummary")
             .removeClass("alert-danger")
             .addClass("alert-success")
