@@ -4,9 +4,14 @@
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="Styles/SiteStyles.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.js"></script>
+    
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    
     <script src="Scripts/FormHandler.js"></script>
     <script>
 
@@ -92,18 +97,18 @@
         </li>
 
         <li class="nav-item">
-        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part2Sheet">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part3Sheet">
         Form 2
         </button>
         </li>
-
+        
         <li class="nav-item">
-        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part3Sheet">
+        <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#part2Sheet">
         Form 3
         </button>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item" id="reviewSubmitTabItem">
         <button type="button" class="nav-link" data-bs-toggle="tab" data-bs-target="#reviewSubmitPart">
         Validate & Print Form
         </button>
@@ -137,8 +142,8 @@
               
                 <ul>
                     <li>Form 1: Designation, Change or Revocation of Beneficiary for Consultants</li>
-                    <li>Form 2: Declaration of Interests(DoI) form - for Non-Staff Workforce</li>
-                    <li>Form 3: Medical Certificate of Fitness for Work</li>
+                    <li>Form 2: Medical Certificate of Fitness for Work</li>
+                    <li>Form 3: Declaration of Interests(DoI) form - for Non-Staff Workforce</li>
                 </ul>
             </p>
             <div class="tab-step-nav no-print">
@@ -171,7 +176,7 @@
                     witnessed to the Responsible Officer in WHO. You may alter your designation of beneficiary at any
                     time by filing a new form which will supersede the previous one.</i></p>
             <p>I, <input id="P1FullName" class="line-input wide" placeholder="First Name, Middle Name, Family Name"
-                    style="width:400">&nbsp;&nbsp;&nbsp;born on&nbsp;&nbsp;&nbsp;<input id="P1DateOfBirth" type="date" class="line-input">
+                    style="width:400">&nbsp;&nbsp;&nbsp;born on&nbsp;&nbsp;&nbsp;<input id="P1DateOfBirth" class="line-input flatpickr-date" placeholder="dd-MMM-yyyy" style="width:150">&nbsp;&nbsp;&nbsp;hereby designate the following person or persons as my beneficiary or beneficiaries for the purpose of receiving any amount standing to my credit at the time of my death, including the benefits accruing from any insurance coverage.
             </p>
             <p>Hereby unconditionally designate the person or persons named below as my <b>beneficiary or
                     beneficiaries</b>. This designation applies to the amount standing to my credit at the time of
@@ -190,9 +195,9 @@
                 <tr>
                     <th>Name of beneficiary</th>
                     <th>DOB</th>
-                    <th>Sex</th>
+                    <th>Sex (F/M)</th>
                     <th>Relationship</th>
-                    <th>Share to be paid(%)</th>
+                    <th>Share to be paid</th>
                     <th class="no-print">Action</th>
                 </tr>
             </thead>
@@ -202,29 +207,50 @@
         </table>
         <p>The share of any beneficiary who may predecease me shall be distributed equally among the surviving beneficiaries or be paid entirely to the sole survivor.  If none of the beneficiaries listed above survives me, then the entire amount shall go to my estate.  This designation cancels and supersedes all previous designations made by me for this purpose.</p>
         <div class="row">
-            <div class="col-8">Written signature of designator in full<div class="signature"></div>
+            <div class="col-8 ">
             </div>
-            <div class="col-4"><input id="P1DesgSignDate" type="date" placeholder="Date" class="signature">
+            <div class="col-4"><input id="P1DesgSignDate" class="line-input flatpickr-date" placeholder="dd-MMM-yyyy">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 signature"><i>Written signature of designator in full</i>
+            </div>
+            <div class="col-4">
             </div>
         </div>
         <h4 class="text-center mt-4">WITNESS</h4>
-        <p>I, the undersigned, having no financial interest in this subject matter, directly or indirectly, hereby certify that this instrument was signed in my presence by the designator on&nbsp;&nbsp;&nbsp;<input id="P1WitSignDate" type="date" class="line-input">.</p>
+        <p class="fw-bold">I, the undersigned, having no financial interest in this subject matter, directly or indirecy certify that this instrument was signed in my presence by the designator on&nbsp;&nbsp;&nbsp;<input id="P1WitSignDate" class="line-input flatpickr-date" placeholder="dd-MMM-yyyy">.</p>
         
         <div class="row">
-            <div class="col-6">&nbsp;</div>
-            <div class="col-6"><input id="P1WitName" class="line-input wide" placeholder="Name (BLOCK LETTER)"
-                    style="width:400">
-            </div>
+          <div class="col-6">&nbsp;</div>
+          <div class="col-6">&nbsp;</div>
         </div>
 
         <div class="row">
-            <div class="col-6">Signature<div class="signature"></div>
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6"><input id="P1WitName" class="line-input wide" style="width:400">
             </div>
-            <div class="col-6"><textarea id="P1WitAddress" class="line-input wide" placeholder="Address" rows="2" cols="50"></textarea></div>
-            </div>
-            <div class="tab-step-nav no-print">
-                <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#instructionSheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
-                <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part2Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
+        </div>
+        <div class="row">
+            
+            <div class="col-6 signature"><i>Signature of witness</i></div>
+            <div class="col-6"><center style="font-size: 12px;"><i>NAME (in BLOCK LETTERS)</i></center></div>
+        </div>
+        
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            <div class="col-6"><textarea id="P1WitAddress" class="line-input wide" rows="2" cols="50"></textarea></div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">&nbsp;</div>
+            
+            <div class="col-6 "><center style="font-size: 12px;"><i>Address of the witness</i></center></div>
+        </div>
+
+        <div class="tab-step-nav no-print">
+            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#instructionSheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+                <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part3Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
             </div>
         </div>
     </div>
@@ -251,7 +277,7 @@
 
                         <div class="col-md-6 mb-3">
                             <label>Date of Birth *</label>
-                            <input type="date" id="txtBenDOB" class="form-control">
+                            <input type="text" id="txtBenDOB" class="form-control flatpickr-date" placeholder="dd-MMM-yyyy">
                         </div>
 
                         <div class="col-md-6 mb-3">
@@ -274,7 +300,7 @@
                         </div>
 
                         <div class="col-md-12 mt-3">
-                            <label>Address</label>
+                            <label>Address, e-mail and phone number *</label>
                             <textarea id="txtBenAddress" class="form-control" rows="3"></textarea>
                         </div>
                     </div>
@@ -305,7 +331,7 @@
 
 
 
-<!------------------------------------------------- Form 2 Form -------------------------------------------------------------->
+<!------------------------------------------------- Form 3 Form -------------------------------------------------------------->
 
 
 
@@ -325,19 +351,19 @@
       <header class="masthead">
         <img src="Images/who-emblem.png" alt="World Health Organization emblem">
         <div>
-          <h1>Declaration of Interests for WHO Non-Staff Workforce</h1>
+          <h1>Declaration of Interests for WHO Non-Staff Workforce<sup style="font-size: 17px !important;" class="footnote" data-tooltip="1 Consultants, Special Service Agreements (SSA) holder, interns and other individuals in a contractual relationship with WHO (e.g. Local Individual Contractor Agreements (LICA)).">1</sup></h1>
           <p class="mb-0 text-secondary" style="display: none;">Please answer each question below. If the answer to any question is "Yes", briefly describe the circumstances in the explanation section.</p>
         </div>
       </header>
 
       <form class="content">
         <section class="notice">
-          <p>As part of its work on global health, the World Health Organization (WHO) at times needs to hire non-staff workforce. To ensure the highest integrity and public confidence in its activities, WHO requires that all members of its workforce disclose any circumstances that could give rise to a conflict of interest related to the work to be undertaken for WHO.</p>
+          <p>As part of its work on global health, the World Health Organization (WHO) at times needs to hire non-staff workforce. To ensure the highest integrity and public confidence in its activities, WHO requires that all members of its workforce disclose any circumstances that could give rise to a <span class=footnoteText>conflict of interest<sup class="footnote" data-tooltip="2 Any interest that may affect, or may reasonably be perceived to affect, the individual's objectivity and independence.">2</sup></span> related to the work to be undertaken for WHO.</p>
           <p>All WHO non-staff workforce must disclose any circumstances that could represent a potential conflict of interest. When filling out this Declaration of Interest form (DOI), you must disclose any personal, financial, professional or other interest relevant to the subject of the work you have been asked to undertake and any interest that could be affected by the outcome of the work. You must also declare relevant interests of your immediate family members (see definition below) and, if you are aware of it, relevant interests of other parties with whom you have substantial common interests, and which may be perceived as unduly influencing your contribution to WHO. For further information on how to fill this form, please consult Annex A (Guidance on how to complete the DOI form for WHO non-staff workforce).</p>
-          <p class="mb-0">Please complete this form upon receipt and submit it to the responsible Technical Unit/Department for assessment. Please be informed that without this form being duly completed, submitted to, and assessed by WHO, your contract will not be issued. You must also promptly inform the responsible Technical Unit/Department if there is any change in the provided information prior to, or during the course of, your engagement with WHO Please be advised that failure to disclose all relevant and required information on this form, depending on the circumstances, may lead WHO to terminate your contract and/or not consider you for future engagements</p>
+          <p class="mb-0">Please complete this form upon receipt and submit it to the responsible Technical Unit/Department for assessment. Please be informed that without this form being duly completed, submitted to, and assessed by WHO, your contract will not be issued. You must also promptly inform the responsible Technical Unit/Department if there is any change in the provided information prior to, or during the course of, your engagement with WHO Please be advised that failure to disclose all relevant and required information on this form, depending on the circumstances, may lead WHO to terminate your contract and/or not consider you for future engagements.</p>
           <p>Answering “Yes” to a question on this form does not automatically disqualify you or limit your engagement with WHO. Your answers will be reviewed by the responsible Technical Unit/Department to determine whether the interests you disclosed constitute a conflict in respect of the envisaged work and whether specific measures are required to manage the disclosure.</p>
           <p>Please be informed that if you are currently engaged with WHO as an individual expert providing guidance on WHO’s normative work and participating in expert committees, advisory groups, conferences, study and scientific groups and other activities of the WHO, WHO in its sole discretion may determine that you may not hold a paid/nil-remunerated engagement with WHO in parallel. If you select to undertake a paid/nil-remunerated consultancy with the WHO, WHO may in its sole discretion terminate your engagement as an individual expert.</p>
-          <div class="row g-3">
+          <div class="row g-4">
             <div class="col-3">
               <label class="form-label fw-semibold" for="name">Name:</label>
               
@@ -356,6 +382,7 @@
             </div>
             <div class="col-6"><input class="form-control" id="P2Email" name="email" type="email"></div>
             <div class="col-3"></div>
+          
         </section>
 
         <section class="section">
@@ -363,7 +390,7 @@
           <div class="section-body">
             <div class="row g-3">
               <div class="col-lg-6">
-                <label class="form-label fw-semibold" for="contractType">Type of contract</label>
+                <label class="form-label fw-semibold" for="contractType">Type of contract (Internship or Consultant contract):</label>
                 <select class="form-select" id="P2ContractType" name="contractType">
                   <option value="">Select one</option>
                   <option>Intern</option>
@@ -394,7 +421,7 @@
                 <input class="form-control" id="P2FullPartTime" name="P2FullPartTime" type="text">
               </div>
               <div class="col-12">
-                <label class="form-label fw-semibold" for="P2WorkTitle">Title of the work to be performed as in the ToR, including brief description</label>
+                <label class="form-label fw-semibold" for="P2WorkTitle">Title of the work to be performed as in the ToR, including brief description of the work to be performed:</label>
                 <textarea class="form-control" id="P2WorkTitle" name="P2WorkTitle"></textarea>
               </div>
             </div>
@@ -402,13 +429,13 @@
         </section>
 
         <section class="section">
-          <h2>What type of interest needs to be declared (this list not being exhaustive)? </h2>
+          <h2 style="background-color: white;color: black;">What type of interest needs to be declared (this list not being exhaustive)? </h2>
           <div class="section-body">
             <p>Different <i><u>types of interests</u></i> may exist and arise. The following, non-exhaustive, list may be referred to as a guide:</p>
             <ol class="mb-0">
-              <li>a close personal relationship with a member of the WHO workforce, or an immediate family member employed by WHO.</li>
+              <li>a close personal relationship with a member of the WHO workforce (staff or non-staff), or an immediate family member<sup class="footnote" data-tooltip="3 Spouse, partner with whom you have a close and on-going personal relationship, your children, your parents, siblings or in-laws.">3</sup> employed by WHO.</li>
               <li>an interest of an immediate family member (see definition below);</li>
-              <li>any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO  or which has a commercial interest in the work of WHO, or a common area of activity with WHO;</li>
+              <li>any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO<sup class="footnote" data-tooltip="4 When identifying entities with which you “may be required” to have dealings, please also consider any entities with which it is reasonably possible that during the course of your engagement with the WHO you may be called upon to have contact, even though no such contact is immediately foreseen, should be included. Of course, if what was reported as a mere possibility of future contact actually materializes you will need to report this fact to your hiring manager before you take any further steps and engage with the entity.">4</sup>  or which has a commercial interest in the work of WHO, or a common area of activity with WHO;</li>
               <li>a proprietary interest in a substance, technology, data, or process (e.g., intellectual property), relevant to WHO's work;</li>
               <li>a financial interest, e.g., shares or bonds, in a commercial entity with which you may be required, directly or indirectly, to have official dealings on behalf of the Organization, or which has a commercial interest in the work of WHO, or a common area of activity with WHO (except share holdings through general mutual funds or similar arrangements where you have no control over the selection of shares).</li>
               <li>public statements or positions (e.g. elected position or public expression of political opinions)</li>
@@ -430,7 +457,7 @@
           <div class="section-body">
             <div class="question">
               <div class="question-grid">
-                <p class="question-text">1. Do you have any close personal relationships (e.g. partnership) and/or family relationship with a member of the WHO workforce (staff or non-staff)?</p>
+                <p class="question-text">1. Do you have any close personal relationships (e.g. partnership) and/or family<sup class="footnote" data-tooltip="5 See footnote 3."">5</sup> relationship with a member of the WHO workforce (staff or non-staff)?</p>
                 <div class="answer-options">
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q1" id="P2Q1Yes" value="Yes"><label class="form-check-label" for="P2Q1Yes">Yes</label></div>
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q1" id="P2Q1No" value="No"><label class="form-check-label" for="P2Q1No">No</label></div>
@@ -464,13 +491,16 @@
             </div>
             <div class="question">
               <div class="question-grid">
-                <p class="question-text">2.3.	be engaged in any other activity with WHO  in any location, including other contractual engagement, participation in WHO expert committees, panel meetings, or other advisory processes?</p>
+                <p class="question-text">2.3.	be engaged in any other activity with WHO<sup class="footnote" data-tooltip="6 This includes working with a WHO Collaborating Centre, non-State actor in official relations with WHO as well as any other paid or nil-remunerated WHO engagements (including with WHO hosted partnerships and other Programmes, Facilities and Secretariats hosted by WHO which include as of July 2022 the Alliance for Health Policy and System Research, the European Observatory on Health Systems and Policies, Partnership for Maternal, Newborn and Child Health, UNITAID, UNAIDS, the United Nations International Computing Centre, the WHO Framework Convention on Tobacco Control, the Special Programme on Research and Training in Tropical Diseases, the Special Programme of Research, Development and Research Training in Human Reproduction - HRP, and the Global Polio Eradication Initiative).">6</sup>  in any location, including other contractual engagement, participation in WHO expert committees, panel meetings, or other advisory processes?</p>
                 <div class="answer-options">
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q23" id="P2Q23Yes" value="Yes"><label class="form-check-label" for="P2Q23Yes">Yes</label></div>
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q23" id="P2Q23No" value="No"><label class="form-check-label" for="P2Q23No">No</label></div>
                 </div>
               </div>
             </div>
+
+
+            
             <p class="subprompt">3. Please indicate remuneration or other support received from any entity or organization in the past 4 years in the area of work to be performed for WHO:</p>
             <div class="question">
               <div class="question-grid">
@@ -496,7 +526,7 @@
         <section class="section">
           <h2>Investment Interests</h2>
           <div class="section-body">
-            <p>4.	Within the past four (4) years, had or have you investments (valued at more than USD 5,000 overall) in an entity with which you may be required, directly or indirectly, to have official dealings on behalf of the Organization, or which has a commercial interest in the work of WHO, or a common area of activity with WHO or with an interest related to the work you will undertake for WHO? You may exclude mutual funds, pension funds or similar investments that are broadly diversified and over which you exercise no control .</p>
+            <p>4.	Within the past four (4) years, had or have you investments (valued at more than USD 5,000 overall) in an entity with which you may be required, directly or indirectly, to have official dealings on behalf of the Organization, or which has a commercial interest in the work of WHO, or a common area of activity with WHO or with an interest related to the work you will undertake for WHO? You may exclude mutual funds, pension funds or similar investments that are broadly diversified and over which you exercise no control<sup class="footnote" data-tooltip="7 This exception would not apply for funds or similar arrangement which focus on industries which have commercial interests in the work of WHO or common areas of activity with WHO.">7</sup>.</p>
             <div class="question">
               <div class="question-grid">
                 <p class="question-text">4.1. Stocks, bonds, stock options, or other securities.</p>
@@ -508,7 +538,7 @@
             </div>
             <div class="question">
               <div class="question-grid">
-                <p class="question-text">4.2. Commercial business interests (e.g. including proprietorships, partnerships, joint ventures, board memberships, or controlling interest in a company.)</p>
+                <p class="question-text">4.2. Commercial business interests (e.g. proprietorships, partnerships, joint ventures, board memberships, controlling interest in a company)</p>
                 <div class="answer-options">
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q42" id="P2Q42Yes" value="Yes"><label class="form-check-label" for="P2Q42Yes">Yes</label></div>
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q42" id="P2Q42No" value="No"><label class="form-check-label" for="P2Q42No">No</label></div>
@@ -590,7 +620,7 @@
             </div>
             <div class="question">
               <div class="question-grid">
-                <p class="question-text">10.	If not already disclosed above, do you have any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO  or which has a commercial interest in the work of WHO, or a common area of activity with WHO?</p>
+                <p class="question-text">10.	If not already disclosed above, do you have any interest in (including association or affiliation with) any entity with which you may be required, directly or indirectly, to have official dealings on behalf of WHO<sup class="footnote" data-tooltip="See footnote 4.">8</sup> or which has a commercial interest in the work of WHO, or a common area of activity with WHO?</p>
                 <div class="answer-options">
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q10" id="P2Q10Yes" value="Yes"><label class="form-check-label" for="P2Q10Yes">Yes</label></div>
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q10" id="P2Q10No" value="No"><label class="form-check-label" for="P2Q10No">No</label></div>
@@ -619,13 +649,12 @@
         </section>
 
         <section class="section">
-          <h2>Industry Specific Questions</h2>
           <div class="section-body">
-            <p><i>Answer without regard to relevance to the subject of the work you will undertake for WHO.</i></p>
+            <p><b>Industry Specific Questions </b><i style="font-size: smaller;">(answer without regard to relevance to the subject of the work you will undertake for WHO.)</i></p>
             <p>Within the past 4 years, have you held employment or received research support or other funding from, or had any other professional relationship with an entity directly involved in the production, manufacture, distribution or sale of products or representing the interests of any of the following: </p>
             <div class="question">
               <div class="question-grid">
-                <p class="question-text">13. Tobacco industry.</p>
+                <p class="question-text">13. Tobacco industry<sup class="footnote" data-tooltip="Pending">9</sup>.</p>
                 <div class="answer-options">
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q13" id="P2Q13Yes" value="Yes"><label class="form-check-label" for="P2Q13Yes">Yes</label></div>
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q13" id="P2Q13No" value="No"><label class="form-check-label" for="P2Q13No">No</label></div>
@@ -634,7 +663,7 @@
             </div>
             <div class="question">
               <div class="question-grid">
-                <p class="question-text">14. Arms industry.</p>
+                <p class="question-text">14. Arms industry<sup class="footnote" data-tooltip="Pending">10</sup>.</p>
                 <div class="answer-options">
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q14" id="P2Q14Yes" value="Yes"><label class="form-check-label" for="P2Q14Yes">Yes</label></div>
                   <div class="form-check"><input class="form-check-input" type="radio" name="P2Q14" id="P2Q14No" value="No"><label class="form-check-label" for="P2Q14No">No</label></div>
@@ -661,7 +690,8 @@
               <table class="table table-bordered align-middle">
                 <thead>
                   <tr>
-                    <th scope="col">Nos. 1-15: Type of interest, question number and category (e.g., Intellectual Property 4.a copyrights) and basic descriptive details (your role, scope and nature etc.).</th>
+                    <th scope="col">Q.No.</th>
+                    <th scope="col">Nos. 1-15: Type of interest, question number and category (e.g., Intellectual Property 4.a copyrights) <u>and</u> basic descriptive details (your role, scope and nature etc.).</th>
                     <th scope="col">Name of entity or organization</th>
                     <th scope="col">Belongs to you, a family member, your employer/affiliated institution(s), or other?</th>
                     <th scope="col">Amount of income or value of interest</th>
@@ -670,13 +700,95 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><textarea class="form-control" name="P2ExplainDetail" id="P2ExplainDetail"></textarea></td>
-                    <td><textarea class="form-control" id="P2ExplainOrgName" name="P2ExplainOrgName"></textarea></td>
-                    <td><textarea class="form-control" id="P2ExplainBelongs" name="P2ExplainBelongs"></textarea></td>
-                    <td><textarea class="form-control" name="P2ExplainValue" id="P2ExplainValue"></textarea></td>
-                    <td><textarea class="form-control" name="P2ExplainInterest" id="P2ExplainInterest"></textarea></td>
-                    <td><textarea class="form-control" name="P2ExplainOther" id="P2ExplainOther"></textarea></td>
+                  <tr id="rowQ1" style="display:none">
+                    <td>1</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ1" id="P2ExplainDetailQ1"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ1" name="P2ExplainOrgNameQ1"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ1" name="P2ExplainBelongsQ1"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ1" id="P2ExplainValueQ1"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ1" id="P2ExplainInterestQ1"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ1" id="P2ExplainOtherQ1"></textarea></td>
+                  </tr>
+                  <tr id="rowQ21" style="display:none">
+                    <td>2.1</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ21" id="P2ExplainDetailQ21"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ21" name="P2ExplainOrgNameQ21"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ21" name="P2ExplainBelongsQ21"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ21" id="P2ExplainValueQ21"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ21" id="P2ExplainInterestQ21"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ21" id="P2ExplainOtherQ21"></textarea></td>
+                  </tr>
+                  <tr id="rowQ22" style="display:none">
+                    <td>2.2</td> 
+                    <td><textarea class="form-control" name="P2ExplainDetailQ22" id="P2ExplainDetailQ22"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ22" name="P2ExplainOrgNameQ22"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ22" name="P2ExplainBelongsQ22"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ22" id="P2ExplainValueQ22"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ22" id="P2ExplainInterestQ22"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ22" id="P2ExplainOtherQ22"></textarea></td>
+                  </tr>
+                  <tr id="rowQ23" style="display:none">
+                    <td>2.3</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ23" id="P2ExplainDetailQ23"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ23" name="P2ExplainOrgNameQ23"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ23" name="P2ExplainBelongsQ23"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ23" id="P2ExplainValueQ23"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ23" id="P2ExplainInterestQ23"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ23" id="P2ExplainOtherQ23"></textarea></td>
+                  </tr>
+                  <tr id="rowQ31" style="display:none">
+                    <td>3.1</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ31" id="P2ExplainDetailQ31"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ31" name="P2ExplainOrgNameQ31"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ31" name="P2ExplainBelongsQ31"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ31" id="P2ExplainValueQ31"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ31" id="P2ExplainInterestQ31"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ31" id="P2ExplainOtherQ31"></textarea></td>
+                  </tr>
+                  <tr id="rowQ32" style="display:none">
+                    <td>3.2</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ32" id="P2ExplainDetailQ32"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ32" name="P2ExplainOrgNameQ32"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ32" name="P2ExplainBelongsQ32"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ32" id="P2ExplainValueQ32"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ32" id="P2ExplainInterestQ32"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ32" id="P2ExplainOtherQ32"></textarea></td>
+                  </tr>
+                  <tr id="rowQ41" style="display:none">
+                    <td>4.1</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ41" id="P2ExplainDetailQ41"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ41" name="P2ExplainOrgNameQ41"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ41" name="P2ExplainBelongsQ41"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ41" id="P2ExplainValueQ41"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ41" id="P2ExplainInterestQ41"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ41" id="P2ExplainOtherQ41"></textarea></td>
+                  </tr>
+                  <tr id="rowQ42" style="display:none">
+                    <td>4.2</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ42" id="P2ExplainDetailQ42"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ42" name="P2ExplainOrgNameQ42"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ42" name="P2ExplainBelongsQ42"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ42" id="P2ExplainValueQ42"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ42" id="P2ExplainInterestQ42"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ42" id="P2ExplainOtherQ42"></textarea></td>
+                  </tr>
+                  <tr id="rowQ51" style="display:none">
+                    <td>5.1</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ51" id="P2ExplainDetailQ51"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ51" name="P2ExplainOrgNameQ51"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ51" name="P2ExplainBelongsQ51"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ51" id="P2ExplainValueQ51"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ51" id="P2ExplainInterestQ51"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ51" id="P2ExplainOtherQ51"></textarea></td>
+                  </tr>
+                  <tr id="rowQ52" style="display:none">
+                    <td>5.2</td>
+                    <td><textarea class="form-control" name="P2ExplainDetailQ52" id="P2ExplainDetailQ52"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainOrgNameQ52" name="P2ExplainOrgNameQ52"></textarea></td>
+                    <td><textarea class="form-control" id="P2ExplainBelongsQ52" name="P2ExplainBelongsQ52"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainValueQ52" id="P2ExplainValueQ52"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainInterestQ52" id="P2ExplainInterestQ52"></textarea></td>
+                    <td><textarea class="form-control" name="P2ExplainOtherQ52" id="P2ExplainOtherQ52"></textarea></td>
                   </tr>
                 </tbody>
               </table>
@@ -694,7 +806,7 @@
             <div class="signature-row">
               <div>
                 <label class="form-label fw-semibold" for="P2DecDate">Date</label>
-                <input class="form-control" type="date" id="P2DecDate" name="P2DecDate">
+                <input class="form-control flatpickr-date" placeholder="dd-MMM-yyyy" id="P2DecDate" name="P2DecDate">
               </div>
               <div>
                 <label class="form-label fw-semibold" for="P2DecName">Name</label>
@@ -711,46 +823,171 @@
         <section class="section" id="sectionRespoOfficer">
           <h2>Responsible Officer Review</h2>
           <div class="section-body">
-            <p class="fw-semibold">Part to be completed by the responsible officer. Please tick the relevant box(es).</p>
-            <p>I have reviewed the form in conjunction with the Stellis Profile/CV and publicly available profile of the candidate, and have undertaken a background review in accordance with Annex 1  and:</p>
+            <p class="fw-semibold">Part to be completed by the responsible officer<sup class="footnote" data-tooltip="11 Depending on the technical unit/office concerned, the responsible officer may be the hiring manager, HR Officer or WHO staff with similar functions/responsibilities.">11</sup>. (Please tick the relevant box(es))<sup class="footnote" data-tooltip="12 Copy of completed form must be shared with the CRE/Ethics Unit by writing to ethicsoffice@who.int where their guidance has been sought.">12</sup>.</p>
+            <p><input class="form-check-input" type="checkbox" id="P2ResOffRev" name="P2ResOffRev"> I have reviewed the form in conjunction with the Stellis Profile/CV and publicly available profile of the candidate, and have undertaken a background review in accordance with Annex 1<sup class="footnote" data-tooltip="13 Guidance on how to undertake a background check for WHO individual experts and non-staff members of WHO workforce.">13</sup> and:</p>
             <div class="officer-check form-check">
               <input class="form-check-input" type="checkbox" id="P2ResOffRev1" name="P2ResOffRev1">
               <label class="form-check-label" for="P2ResOffRev1">1. No disclosure(s) has been made and nothing has been identified that would prevent the hiring of the envisaged candidate. </label>
             </div>
             <div class="officer-check form-check">
               <input class="form-check-input" type="checkbox" id="P2ResOffRev2" name="P2ResOffRev2">
-              <label class="form-check-label" for="P2ResOffRev2">2. It has been determined that the disclosure(s) is/are not relevant for the envisaged work and, in consultation with the Department Director/Unit Head , it has been determined that there is nothing preventing the envisaged candidate from being hired. A note for the record reflecting this assessment has been prepared.</label>
+              <label class="form-check-label" for="P2ResOffRev2">2. It has been determined that the disclosure(s) is/are not relevant for the envisaged work and, in consultation with the Department Director/Unit Head<sup class="footnote" data-tooltip="14 Or Incident manager (for graded emergencies)/Responsible Officer (Polio STOP Programme).">14</sup>, it has been determined that there is nothing preventing the envisaged candidate from being hired. A note for the record reflecting this assessment has been prepared.</label>
             </div>
-            <div class="officer-check form-check">
-              <input class="form-check-input" type="checkbox" id="P2ResOffRev3" name="P2ResOffRev3">
-              <label class="form-check-label" for="P2ResOffRev3">3. It was determined that due to the interests disclosed further guidance from the Ethics Unit, CRE (CRE/Ethics Unit)  was needed in order to assess the disclosures made. The disclosures were discussed with the CRE/Ethics Unit and the following advice was provided</label>
-            </div>
-            <label class="form-label fw-semibold" for="P2ResOffRevAdvice">Advice provided by the CRE/Ethics Unit</label>
-            <textarea class="form-control mb-3" id="P2ResOffRevAdvice" name="P2ResOffRevAdvice"></textarea>
 
-            <p>As the final decision on whether to proceed, or not, with the hiring is that of the Department Director/Unit Head , the advice of the CRE/Ethics Unit was taken into consideration and it was decided by the Department Director/Unit Head  that:</p>
-            <div class="row g-3">
-              <div class="col-12">
-                <label class="form-label fw-semibold" for="P2ResOffRevHiring">The hiring can proceed as</label>
-                <textarea class="form-control" id="P2ResOffRevHiring" name="P2ResOffRevHiring"></textarea>
-              </div>
-              <div class="col-12">
-                <label class="form-label fw-semibold" for="P2ResOffRevMitigated">The disclosed interest can be mitigated by</label>
-                <textarea class="form-control" id="P2ResOffRevMitigated" name="P2ResOffRevMitigated"></textarea>
-              </div>
+
+
+
+      
+
+
+
+
+
+
+
+
+<div class="officer-check">
+
+    <!-- Main checkbox -->
+    <input class="form-check-input"
+           type="checkbox"
+           id="P2ResOffRev3"
+           name="P2ResOffRev3">
+
+    <!-- Everything else goes inside this content container -->
+    <div class="officer-check-content">
+
+        <div class="officer-check-line">
+            <label for="P2ResOffRev3">
+                3. It was determined that due to the interests disclosed further guidance
+                from the Ethics Unit, CRE (CRE/Ethics Unit)<sup class="footnote" data-tooltip="15 Please note that you do not have to categorically seek advice from the CRE/Ethics Unit when an interest is disclosed. The Ethics Unit should only be contacted by writing to ethicsoffice@who.int in instances where you are uncertain which action should be taken on an individual case.">15</sup> was needed in order to assess
+                the disclosures made. The disclosures were discussed with the CRE/Ethics
+                Unit and the following advice was provided:
+            </label>
+
+            <input type="text"
+               id="P2ResOffRev3Advice"
+               name="P2ResOffRev3Advice"
+               class="form-control inline-input advice-input">
+        </div>
+
+        <p class="mt-3">
+            As the final decision on whether to proceed, or not, with the hiring is that
+            of the Department Director/Unit Head<sup class="footnote" data-tooltip="16 See footnote 14.">16</sup>, the advice of the CRE/Ethics Unit was
+            taken into consideration and it was decided by the Department Director/Unit
+            Head<sup class="footnote" data-tooltip="17 See footnote 14.">17</sup> that:
+        </p>
+
+        <!-- Hiring options -->
+        <div class="row">
+
+            <div class="col-12 mb-2">
+                <div class="form-check">
+
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="P2ResOffRevHiringCHK"
+                           name="P2ResOffRevHiringCHK">
+
+                    <label class="form-check-label"
+                           for="P2ResOffRevHiringCHK">
+                        The hiring can proceed as 
+                        <input type="text"
+                          class="form-control inline-input"
+                          id="P2ResOffRevHiring"
+                          name="P2ResOffRevHiring">
+                    </label>
+
+                    
+
+                </div>
             </div>
-            <div class="officer-check form-check mt-3">
-              <input class="form-check-input" type="checkbox" id="P2ResOffRevNotComp" name="P2ResOffRevNotComp">
-              <label class="form-check-label" for="P2ResOffRevNotComp">The interest(s) disclosed is/are too significant and not compatible with WHO. The proposed candidate cannot be hired.</label>
+
+
+            <div class="col-12 mb-2">
+                <div class="form-check">
+
+                    <input class="form-check-input"
+                           type="checkbox"
+                           id="P2ResOffRevMitigatedCHK"
+                           name="P2ResOffRevMitigatedCHK">
+
+                    <label class="form-check-label"
+                           for="P2ResOffRevMitigatedCHK">
+                        The disclosed interest can be mitigated by 
+                        <input type="text"
+                          class="form-control inline-input"
+                          id="P2ResOffRevMitigated"
+                          name="P2ResOffRevMitigated">
+                    </label>
+
+                    
+
+                </div>
             </div>
-            <div class="officer-check form-check">
-              <input class="form-check-input" type="checkbox" id="P2ResOffRevNFR" name="P2ResOffRevNFR">
-              <label class="form-check-label" for="P2ResOffRevNFR">A note for the record reflecting this assessment has been prepared and a copy shared with the CRE/Ethics Unit.</label>
-            </div>
+
+        </div>
+
+        <!-- Cannot hire -->
+        <div class="form-check">
+
+            <input class="form-check-input"
+                   type="checkbox"
+                   id="P2ResOffRevNotComp"
+                   name="P2ResOffRevNotComp">
+
+            <label class="form-check-label"
+                   for="P2ResOffRevNotComp">
+                The interest(s) disclosed is/are too significant and not compatible with
+                WHO. The proposed candidate cannot be hired.
+            </label>
+
+        </div>
+
+        <!-- Note for record -->
+        <div class="form-check mt-2" style="padding-left: 2px !important;">
+
+            <label class="form-check-label"
+                   for="P2ResOffRevNFR" style="padding-left: 2px !important;">
+                A note for the record reflecting this assessment has been prepared and
+                a copy shared with the CRE/Ethics Unit.
+            </label>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+           
+
+
+
+
+            
+            
+            
             <div class="signature-row mt-3">
               <div>
                 <label class="form-label fw-semibold" for="P2ResOffRevDate">Date</label>
-                <input class="form-control" type="date" id="P2ResOffRevDate" name="P2ResOffRevDate">
+                <input class="form-control flatpickr-date" placeholder="dd-MMM-yyyy" id="P2ResOffRevDate" name="P2ResOffRevDate">
               </div>
               <div>
                 <label class="form-label fw-semibold" for="P2ResOffRevName">Name</label>
@@ -763,9 +1000,59 @@
             </div>
           </div>
         </section>
+
+      
+
+      <div class="col-12 footnote page-break" id="footnotes">	
+        <label class="form-label fw-semibold">Footnotes:</label>
+        <br>
+        1 Consultants, Special Service Agreements (SSA) holder, interns and other individuals in a contractual relationship with WHO (e.g. Local Individual Contractor Agreements (LICA)).
+        <br>
+        2 Any interest that may affect, or may reasonably be perceived to affect, the individual's objectivity and independence.
+        <br>
+        3 Spouse, partner with whom you have a close and on-going personal relationship, your children, your parents, siblings or in-laws.
+        <br>
+        4 When identifying entities with which you “may be required” to have dealings, please also consider any entities with which it is reasonably possible that during the course of your engagement with the WHO you may be called upon to have contact, even though no such contact is immediately foreseen, should be included. Of course, if what was reported as a mere possibility of future contact actually materializes you will need to report this fact to your hiring manager before you take any further steps and engage with the entity.
+        <br>
+        5 See footnote 3.
+        <br>
+        6 This includes working with a WHO Collaborating Centre, non-State actor in official relations with WHO as well as any other paid or nil-remunerated WHO engagements (including with WHO hosted partnerships and other Programmes, Facilities and Secretariats hosted by WHO which include as of July 2022 the Alliance for Health Policy and System Research, the European Observatory on Health Systems and Policies, Partnership for Maternal, Newborn and Child Health, UNITAID, UNAIDS, the United Nations International Computing Centre, the WHO Framework Convention on Tobacco Control, the Special Programme on Research and Training in Tropical Diseases, the Special Programme of Research, Development and Research Training in Human Reproduction - HRP, and the Global Polio Eradication Initiative).		
+        <br>
+        7 This exception would not apply for funds or similar arrangement which focus on industries which have commercial interests in the work of WHO or common areas of activity with WHO.
+        <br>
+        8 Please see footnote.
+        <br>
+        9
+        <br>
+        10
+        <br>
+        11 Depending on the technical unit/office concerned, the responsible officer may be the hiring manager, HR Officer or WHO staff with similar functions/responsibilities. 
+        <br>
+        12 Copy of completed form must be shared with the CRE/Ethics Unit by writing to ethicsoffice@who.int where their guidance has been sought. 
+        <br>
+        13 Guidance on how to undertake a background check for WHO individual experts and non-staff members of WHO workforce. 
+        <br>
+        14 Or Incident manager (for graded emergencies)/Responsible Officer (Polio STOP Programme). 
+        <br>
+        15 Please note that you do not have to categorically seek advice from the CRE/Ethics Unit when an interest is disclosed. The Ethics Unit should only be contacted by writing to ethicsoffice@who.int in instances where you are uncertain which action should be taken on an individual case. 
+        <br>
+        16 See footnote 14. 
+        <br>
+        17 See footnote 14.
+
+        <br><span style="color:grey">WHO ETHICS/CRE - 06/2022</span>
+        </div>
+
+
+
+
+
+
+
+
         <div class="tab-step-nav no-print">
-            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part1Sheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
-            <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part3Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
+            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part3Sheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+            <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#reviewSubmitPart">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
         </div>
       </form>
     </div>
@@ -796,7 +1083,7 @@
       
       <header class="topbar">
         <img src="Images/who-logo-medical-certificate.jpeg" alt="World Health Organization logo">
-        <div>
+        <div style="text-align: center;">
           <h1>Medical Certificate of Fitness for Work</h1>
           <p class="validity">Period of validity: One calendar year as of the date of signature by the attending physician below</p>
         </div>
@@ -833,8 +1120,8 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <label class="form-label" for="P3DateOfBirth">Date of Birth (dd/mm/yyyy)</label>
-                <input class="form-control" id="P3DateOfBirth" name="P3DateOfBirth" type="text" inputmode="numeric" placeholder="dd/mm/yyyy">
+                <label class="form-label" for="P3DateOfBirth">Date of Birth (dd-MMM-yyyy)</label>
+                <input class="form-control flatpickr-date" id="P3DateOfBirth" name="P3DateOfBirth" placeholder="dd-MMM-yyyy">
               </div>
               <div class="col-md-6">
                 <label class="form-label" for="P3Nationality">Nationality</label>
@@ -882,11 +1169,11 @@
               </div>
               <div class="col-md-6">
                 <label class="form-label" for="P3ExpFromDate">Expected dates, from</label>
-                <input class="form-control" id="P3ExpFromDate" name="P3ExpFromDate" type="text" placeholder="dd/mm/yyyy">
+                <input class="form-control flatpickr-date" id="P3ExpFromDate" name="P3ExpFromDate" placeholder="dd-MMM-yyyy">
               </div>
               <div class="col-md-6">
                 <label class="form-label" for="P3ExpToDate">To</label>
-                <input class="form-control" id="P3ExpToDate" name="P3ExpToDate" type="text" placeholder="dd/mm/yyyy">
+                <input class="form-control flatpickr-date" id="P3ExpToDate" name="P3ExpToDate" placeholder="dd-MMM-yyyy">
               </div>
             </div>
           </div>
@@ -924,10 +1211,10 @@
           </div>
         </section>
 
-        <section class="section plain-section">
+        <section class="section plain-section medical-section">
           <h2 class="section-title">3. To Be Completed by the Individual</h2>
           <div class="section-body">
-            <p>Please electronically complete and return this questionnaire as soon as possible (preferably within 3 days) to Technical Unit.</p>
+            
             <p>I, Mr / Mrs / Miss ................................................ hereby declare that all information provided by me in the context of the above medical examination is true and complete to the best of my knowledge. I understand that a false statement or a material omission, in particular a failure to disclose a known physical and/or psychological condition, including conditions under investigation, may result in the cancellation of the contract and/or the withdrawal of any offer of a contract with WHO.</p>
             <p>I further understand that, if any new medical condition or a substantial change in an existing medical condition, appears during the period of validity of this Medical Certificate of Fitness for Work, or if the location of the work assignment changes, it is my responsibility to inform my attending physician and to provide the responsible WHO Technical Unit with a new Certificate of Fitness for Work.</p>
 
@@ -943,10 +1230,17 @@
               <div></div>
             </div>
           </div>
+
+          <div class="medical-version-text">
+            Medical Certificate of Fitness for Work - Version 1 - 24 February 2016
+          </div>
         </section>
+
+
+        <p class="mt-2" style="font-size:smaller;"><i>Please electronically complete and return this questionnaire as soon as possible (preferably within 3 days) to Technical Unit.</i></p>
         <div class="tab-step-nav no-print">
-            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part2Sheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
-            <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#reviewSubmitPart">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
+            <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part1Sheet"><i class="bi bi-arrow-left-circle-fill me-1"></i>Previous</button>
+            <button type="button" class="btn btn-primary btn-next-tab" data-next-tab="#part2Sheet">Next<i class="bi bi-arrow-right-circle-fill ms-1"></i></button>
         </div>
       </form>
     </div>
@@ -1023,7 +1317,7 @@
                 <div id="reviewValidationSummary" class="alert alert-danger d-none"></div>
 
                 <div class="mt-4 d-flex gap-2 justify-content-between">
-                    <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part3Sheet">
+                    <button type="button" class="btn btn-secondary btn-prev-tab" data-prev-tab="#part2Sheet">
                         <i class="bi bi-arrow-left-circle-fill me-1"></i>Previous
                     </button>
                     

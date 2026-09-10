@@ -30,7 +30,9 @@ body {
 
 .signature {
     height: 35px;
-    border-bottom: 1px solid #000
+    font-size: 12px;
+    border-top: 1px solid #000;
+    font-style: italic;
 }
 
 .beneficiary th {
@@ -259,12 +261,13 @@ object-fit:contain;
     box-shadow: 0 18px 48px rgba(24, 42, 62, .12);
 }
 
+/*
 .masthead {
     border-top: 6px solid var(--who-blue);
     border-bottom: 1px solid var(--line);
     padding: 28px;
     display: grid;
-    grid-template-columns: 92px 1fr;
+    grid-template-columns: 1fr 92px;
     gap: 22px;
     align-items: center;
 }
@@ -273,6 +276,53 @@ object-fit:contain;
     width: 92px;
     height: 92px;
     object-fit: contain;
+    text-align: right;
+}
+    */
+.masthead {
+    border-top: 6px solid var(--who-blue);
+    border-bottom: 1px solid var(--line);
+    padding: 28px;
+    display: grid;
+    grid-template-columns: 1fr 92px;
+    gap: 22px;
+    align-items: center;
+}
+
+.masthead img {
+    width: 92px;
+    height: 92px;
+    object-fit: contain;
+    justify-self: end;
+    grid-column: 2;
+}
+
+.masthead > div {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.footnote {
+    font-size: 0.75rem;
+    color: #0072CE;
+    line-height: 1.4;
+    margin-top: 8px;
+}
+
+.footnoteText {
+    font-size: 1rem;
+    
+   
+}
+
+th{
+  vertical-align:top !important;
+}
+
+.footnoteText sup {
+    font-size: 0.7em;
+    font-weight: 600;
+    margin-right: 2px;
 }
 
 .content {
@@ -341,11 +391,50 @@ object-fit:contain;
     }
 
     .officer-check {
-      border: 1px solid var(--line);
-      padding: 13px 14px;
+      border: 1px solid #607D8B;
+      padding: 10px 30px;
       margin-bottom: 12px;
       background: #fff;
+      margin-left: 20px;
+      display: flex !important;
+    align-items: flex-start !important;
+    width: 100%;
     }
+
+    
+.officer-check > .form-check-input {
+    flex: 0 0 auto;
+    margin-top: 5px;
+    margin-right: 8px;
+}
+
+.officer-check-content {
+    flex: 1 1 auto;
+    min-width: 0;
+    width: 100%;
+}
+
+.officer-check-line {
+    display: block !important;
+    width: 100%;
+}
+
+.officer-check-line label {
+    display: inline !important;
+    margin: 0 !important;
+}
+
+.inline-input {
+    display: inline-block !important;
+    width: 250px !important;
+    height: 38px;
+    margin-left: 8px;
+    vertical-align: middle;
+}
+
+.advice-input {
+    width: 220px !important;
+}
 
     .print-actions {
       display: flex;
@@ -469,11 +558,110 @@ object-fit:contain;
       padding: 8px 12px;
       margin: 18px 0 14px;
       text-transform: uppercase;
+      text-align: center;
     }
 
     .form-label {
       font-weight: 700;
       color: #263a4a;
+    }
+
+    #sectionRespoOfficer .form-check-input:disabled ~ .form-check-label {
+      opacity: 1 !important;
+      color: inherit !important;
+    }
+
+    input[type="checkbox"] {
+      border: 1.5px solid #455A64 !important
+    }
+
+    .medical-section {
+        position: relative;
+    }
+
+    .medical-section-content {
+        width: 100%;
+    }
+
+    .medical-version-text {
+        position: absolute;
+        top: 20px;
+        right: -20px;
+        transform: rotate(180deg);
+        writing-mode: vertical-rl;
+        white-space: nowrap;
+        
+        font-size: 9px;
+        color: rgb(28, 28, 129);
+        font-weight: normal;
+    }
+
+    sup {
+        color: #0072CE;
+        cursor: help;
+        position: relative;
+        font-weight: 600;
+    }
+
+    sup.footnote {
+        color: #0072CE;
+        cursor: help;
+        position: relative;
+    }
+
+    /* Tooltip */
+    sup[data-tooltip]::after {
+        content: attr(data-tooltip);
+
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 260px;
+        padding: 8px 10px;
+
+        background: #333;
+        color: #fff;
+
+        font-size: 12px;
+        font-weight: normal;
+        line-height: 1.4;
+        text-align: left;
+
+        border-radius: 4px;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        transition: opacity 0.2s ease;
+        z-index: 9999;
+    }
+
+    /* Small arrow */
+    sup[data-tooltip]::before {
+        content: "";
+
+        position: absolute;
+        bottom: calc(100% - 5px);
+        left: 50%;
+        transform: translateX(-50%);
+
+        border: 5px solid transparent;
+        border-top-color: #333;
+
+        opacity: 0;
+        visibility: hidden;
+
+        z-index: 10000;
+    }
+
+    /* Show tooltip */
+    sup[data-tooltip]:hover::after,
+    sup[data-tooltip]:hover::before {
+        opacity: 1;
+        visibility: visible;
     }
 
     .form-control,

@@ -1,11 +1,15 @@
     var beneficiaries = [];
+    var conRequestYesResponses = [];
+
     var ConFormConfig = {
         listName: "ConRequests",
         fillFlowUrl: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/0f33cd0a95a5404ebc159938b62faa8e/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=Tg7c6coQS8863YnQ_hjK7kMjuOujm0M2nEwh0_KMtIY",
         updateFlowUrl: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/3ea4771e29fa47d88e6deb02ab4e6343/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=A4L_YwDU1Vp46zqH1t8cCkVT8jHkaNyV8FtR694FsBo",
         generatePDFFlowURL: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/929f49fe71544d97b1194bb298bbf7d7/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=YXtETvTQkrKYrTSjXW2yxijil2iWUXmxPnEbASLeMgE",
         fillBeneficiariesFlowUrl: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/ba2d7488a68444fda44e3bff2d8f7ba1/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=FlAeS8CytDupMx5ChaTVbqlYGMFWvFs_7h_rjUEz8jY",
-        saveBeneficiariesFlowUrl: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/workflows/aa9ebce1e3854f3caa885a607a8d8984/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=LANPHnmpjjO5j5nZtVsGfc20QxxW5n8rTgIgHBA-_XM"
+        getConRequestYesResponse: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/00/workflows/abb9b99c361c4c8cb19c5eacadf0e7b7/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=nZ2TWfiKY3HvhU4gvzM8-gQ3y-GV2KX5mIa1ay010Nw",
+        saveConRequestYesResponses: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/25/workflows/1189b5cb063741eeb768e0504733662f/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=OG-uDieTOHioVuoyYdTRF-rsampSn7Pvfi-r0D7LVh0",
+        saveBeneficiariesFlowUrl: "https://defaultf610c0b7bd244b39810b3dc280afb5.90.environment.api.powerplatform.com:443/powerautomate/automations/direct/cu/31/workflows/aa9ebce1e3854f3caa885a607a8d8984/triggers/manual/paths/invoke?api-version=1&sp=%2Ftriggers%2Fmanual%2Frun&sv=1.0&sig=LANPHnmpjjO5j5nZtVsGfc20QxxW5n8rTgIgHBA-_XM"
     };
 
     var ConFormColumns = [
@@ -102,31 +106,31 @@ var ConFormMandatoryFields = [
     { id: "P1WitName", label: "Form 1 - NAME (BLOCK LETTERS)" },
     { id: "P1WitAddress", label: "Form 1 - Address of Witness" },
 
-    { id: "P2Name", label: "Form 2 - Name" },
-    { id: "P2AffiInstitue", label: "Form 2 - Affiliated institution(s)" },
-    { id: "P2Email", label: "Form 2 - Email" },
-    { id: "P2ContractType", label: "Form 2 - Type of contract" },
-    { id: "P2TORRecv", label: "Form 2 - Terms of Reference received", type: "radio" },
-    { id: "P2PlannedDuration", label: "Form 2 - Planned duration" },
-    { id: "P2WorkTitle", label: "Form 2 - Title of work to be performed" },
+    { id: "P2Name", label: "Form 3 - Name" },
+    { id: "P2AffiInstitue", label: "Form 3 - Affiliated institution(s)" },
+    { id: "P2Email", label: "Form 3 - Email" },
+    { id: "P2ContractType", label: "Form 3 - Type of contract" },
+    { id: "P2TORRecv", label: "Form 3 - Terms of Reference received", type: "radio" },
+    { id: "P2PlannedDuration", label: "Form 3 - Planned duration" },
+    { id: "P2WorkTitle", label: "Form 3 - Title of work to be performed" },
 
-    { id: "P2DecDate", label: "Form 2 - Declaration Date" },
-    { id: "P2DecName", label: "Form 2 - Declaration Name" },
-    { id: "P2DecSign", label: "Form 2 - Declaration Signature" },
+    { id: "P2DecDate", label: "Form 3 - Declaration Date" },
+    { id: "P2DecName", label: "Form 3 - Declaration Name" },
+    { id: "P2DecSign", label: "Form 3 - Declaration Signature" },
 
-    { id: "P3FamilyName", label: "Form 3 - Family Name" },
-    { id: "P3GivenName", label: "Form 3 - Given Name" },
-    { id: "P3DateOfBirth", label: "Form 3 - Date of Birth" },
-    { id: "P3Gender", label: "Form 3 - Gender", type: "radio" },
-    { id: "P3Nationality", label: "Form 3 - Nationality" },
-    { id: "P3Street", label: "Form 3 - Street" },
-    { id: "P3City", label: "Form 3 - City" },
-    { id: "P3Country", label: "Form 3 - Country" },
-    { id: "P3Email", label: "Form 3 - Email address" },
-    { id: "P3WADescription", label: "Form 3 - Description of work assignment" },
-    { id: "P3WALocation", label: "Form 3 - Location of work assignment" },
-    { id: "P3ExpFromDate", label: "Form 3 - Expected dates, from" },
-    { id: "P3ExpToDate", label: "Form 3 - Expected dates, to" }
+    { id: "P3FamilyName", label: "Form 2 - Family Name" },
+    { id: "P3GivenName", label: "Form 2 - Given Name" },
+    { id: "P3DateOfBirth", label: "Form 2 - Date of Birth" },
+    { id: "P3Gender", label: "Form 2 - Gender", type: "radio" },
+    { id: "P3Nationality", label: "Form 2 - Nationality" },
+    { id: "P3Street", label: "Form 2 - Street" },
+    { id: "P3City", label: "Form 2 - City" },
+    { id: "P3Country", label: "Form 2 - Country" },
+    { id: "P3Email", label: "Form 2 - Email address" },
+    { id: "P3WADescription", label: "Form 2 - Description of work assignment" },
+    { id: "P3WALocation", label: "Form 2 - Location of work assignment" },
+    { id: "P3ExpFromDate", label: "Form 2 - Expected dates, from" },
+    { id: "P3ExpToDate", label: "Form 2 - Expected dates, to" }
 ];
 
 var ConFormQuestionFields = [
@@ -153,12 +157,25 @@ var ConFormQuestionFields = [
 ];
 
 var ConFormYesExplanationFields = [
-    "P2ExplainDetail",
-    "P2ExplainOrgName",
-    "P2ExplainBelongs",
-    "P2ExplainValue",
-    "P2ExplainInterest",
-    "P2ExplainOther"
+    { question: "P2Q1", rowId: "rowQ1", suffix: "Q1", display: "1" },
+    { question: "P2Q21", rowId: "rowQ21", suffix: "Q21", display: "2.1" },
+    { question: "P2Q22", rowId: "rowQ22", suffix: "Q22", display: "2.2" },
+    { question: "P2Q23", rowId: "rowQ23", suffix: "Q23", display: "2.3" },
+    { question: "P2Q31", rowId: "rowQ31", suffix: "Q31", display: "3.1" },
+    { question: "P2Q32", rowId: "rowQ32", suffix: "Q32", display: "3.2" },
+    { question: "P2Q41", rowId: "rowQ41", suffix: "Q41", display: "4.1" },
+    { question: "P2Q42", rowId: "rowQ42", suffix: "Q42", display: "4.2" },
+    { question: "P2Q51", rowId: "rowQ51", suffix: "Q51", display: "5.1" },
+    { question: "P2Q52", rowId: "rowQ52", suffix: "Q52", display: "5.2" }
+];
+
+var ConFormYesExplanationColumns = [
+    { prefix: "P2ExplainDetail", label: "Details of interest" },
+    { prefix: "P2ExplainOrgName", label: "Name of organization/entity" },
+    { prefix: "P2ExplainBelongs", label: "Interest belongs to" },
+    { prefix: "P2ExplainValue", label: "Amount/value" },
+    { prefix: "P2ExplainInterest", label: "Current interest" },
+    { prefix: "P2ExplainOther", label: "Other details" }
 ];
 
 let reviewStatus = {
@@ -167,229 +184,323 @@ let reviewStatus = {
     validationPassed: false
 };
 
+var ConFormAccess = {
+    mode: "",
+    conId: "",
+    token: "",
+    isAdminRead: false,
+    isConsultant: false
+};
+
+function getDateOnly(dateStringWithTime) {
+   	// Extract the date portion
+    var dateWithoutTime = dateStringWithTime.split('T')[0];
+
+    // Create a new Date object without time
+    var convertedDate = new Date(dateWithoutTime);
+	return convertedDate;
+}
     
-    $(document).ready(function () {
+$(document).ready(function () {
 
-        FillFormData();
-        FillBeneficiariesData();
-        initializeValidatePrintWorkflow();
-   
-        $('#frm input[type="button"]').click(function () {
+    if (!InitializeConFormAccess()) {
+        return;
+    }
 
-            SaveFormData();
+    flatpickr(".flatpickr-date", {
+        dateFormat: "d-M-Y",
+        allowInput: false
+    });
 
-        });
+    $(".flatpickr-date").attr("readonly", true);
+    
+    FillFormData();
+    FillBeneficiariesData();
+    FillConRequestYesResponsesData();
+    initializeValidatePrintWorkflow();
 
-        $("#btnSubmit").click(function () {
-            if (ValidateFormData()) {
-                //UpdateFormData();
-                alert("Form data is valid. You can proceed to submit.");
-            }
-        });
+    ApplyConFormAccessMode();
 
-        $("#btnSaveBeneficiary").click(function () {
+    setSectionDisabled("sectionRespoOfficer", true);
 
-            if ($("#txtBenName").val() == "") {
-                alert("Name is required");
-                return;
+    $('#frm input[type="button"]').click(function () {
 
-            }
+        SaveFormData();
 
-            if ($("#txtBenDOB").val() == "") {
-                alert("DOB is required");
-                return;
-            }
+    });
 
-            if ($("#ddlSex").val() == "") {
-                alert("Sex is required");
-                return;
-            }
+    $("#btnSubmit").click(function () {
+        if (ValidateFormData()) {
+            //UpdateFormData();
+            alert("Form data is valid. You can proceed to submit.");
+        }
+    });
 
-            if ($("#txtRelationship").val() == "") {
-                alert("Relationship is required");
-                return;
-            }
+    $("#btnSaveBeneficiary").click(function () {
 
-            if ($("#txtShare").val() == "") {
-                alert("Share is required");
-                return;
-            }
-
-            var obj = {
-                Name: $("#txtBenName").val(),
-                DOB: $("#txtBenDOB").val(),
-                Sex: $("#ddlSex").val(),
-                Relationship: $("#txtRelationship").val(),
-                Share: $("#txtShare").val(),
-                Address: $("#txtBenAddress").val()
-            };
-
-            var row = $("#hdnRow").val();
-            if (row == "") {
-                beneficiaries.push(obj);
-            }
-            else {
-                beneficiaries[row] = obj;
-            }
-
-            loadBeneficiaries();
-            $("#hdnBeneficiariesJson").val(JSON.stringify(beneficiaries));
-
-            HideModal("beneficiaryModal");
-        });
-
-        $("#btnAddBeneficiary").click(function () {
-            $("#hdnRow").val("");
-            $("#beneficiaryModal input").val("");
-            $("#beneficiaryModal textarea").val("");
-            $("#ddlSex").val("");
-            $("#beneficiaryModal").modal("show");
-        });
-
-        $("#uploadSignedFormBtn").on("click", async function (event) {
-            event.preventDefault();
-
-            if (!reviewStatus.validationPassed) {
-                showUploadMessage("warning", "Please validate the form before uploading the signed PDF.");
-                return;
-            }
-
-            const conId = GetQueryStringValue("ConID");
-            const fileInput = document.getElementById("signedFormUpload");
-            const file = fileInput.files[0];
-
-            if (!conId) {
-            showUploadMessage("warning", "Please provide ConID.");
+        if ($("#txtBenName").val() == "") {
+            alert("Name is required");
             return;
-            }
 
-            if (!file) {
-            showUploadMessage("warning", "Please select a file to upload.");
+        }
+
+        if (!GetFlatpickrControlDate($("#txtBenDOB"))) {
+            alert("DOB is required");
             return;
-            }
+        }
+        else {
+            const dob = $("#txtBenDOB").val();
+            const selectedDate = flatpickr.parseDate(dob, "d-M-Y");
 
-            if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
-            showUploadMessage("warning", "File size must be " + MAX_FILE_SIZE_MB + " MB or less.");
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+
+            selectedDate.setHours(0, 0, 0, 0);
+
+            if (selectedDate >= today) {
+                alert("Date of Birth must be earlier than today.");
+                $("#txtBenDOB").focus();
+                return;
+            }
+        }
+
+        if ($("#ddlSex").val() == "") {
+            alert("Sex is required");
             return;
+        }
+
+        if ($("#txtRelationship").val() == "") {
+            alert("Relationship is required");
+            return;
+        }
+
+        if ($("#txtShare").val() == "") {
+            alert("Share is required");
+            return;
+        }
+
+        if ($("#txtBenAddress").val() == "") {
+            alert("Address is required");
+            return;
+        }
+
+        var obj = {
+            Name: $("#txtBenName").val(),
+            DOB: FormatFlatpickrDate(GetFlatpickrControlDate($("#txtBenDOB"))),
+            Sex: $("#ddlSex").val(),
+            Relationship: $("#txtRelationship").val(),
+            Share: $("#txtShare").val(),
+            Address: $("#txtBenAddress").val()
+        };
+
+        var row = $("#hdnRow").val();
+        if (row == "") {
+            beneficiaries.push(obj);
+        }
+        else {
+            beneficiaries[row] = obj;
+        }
+
+        loadBeneficiaries();
+        $("#hdnBeneficiariesJson").val(JSON.stringify(beneficiaries));
+
+        HideModal("beneficiaryModal");
+    });
+
+    $("#btnAddBeneficiary").click(function () {
+        $("#hdnRow").val("");
+        $("#beneficiaryModal input").val("");
+        $("#beneficiaryModal textarea").val("");
+        SetFlatpickrControlDate($("#txtBenDOB"), "");
+        $("#ddlSex").val("");
+        $("#beneficiaryModal").modal("show");
+    });
+
+    $("#uploadSignedFormBtn").on("click", async function (event) {
+        event.preventDefault();
+
+        if (!reviewStatus.validationPassed) {
+            showUploadMessage("warning", "Please validate the form before uploading the signed PDF.");
+            return;
+        }
+
+        const conId = GetQueryStringValue("ConID");
+        const fileInput = document.getElementById("signedFormUpload");
+        const file = fileInput.files[0];
+
+        if (!conId) {
+        showUploadMessage("warning", "Please provide ConID.");
+        return;
+        }
+
+        if (!file) {
+        showUploadMessage("warning", "Please select a file to upload.");
+        return;
+        }
+
+        if (file.size > MAX_FILE_SIZE_MB * 1024 * 1024) {
+        showUploadMessage("warning", "File size must be " + MAX_FILE_SIZE_MB + " MB or less.");
+        return;
+        }
+
+        setUploadLoading(true);
+        showUploadMessage("info", "Preparing upload...");
+
+        try {
+        const fileContentBase64 = await readFileAsBase64(file);
+
+        $.ajax({
+            url: UPLOAD_FLOW_URL,
+            method: "POST",
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+            data: JSON.stringify({
+                conId: conId,
+                fileName: file.name,
+                fileContentBase64: fileContentBase64,
+                contentType: file.type || "application/octet-stream"  
+            }),
+            success: function (response) {
+            if (response && response.success === false) {
+                showUploadMessage("danger", response.message || "Upload failed.");
+                return;
             }
 
-            setUploadLoading(true);
-            showUploadMessage("info", "Preparing upload...");
+            showUploadMessage("success", response.message || "File uploaded successfully.");
+            //$("#signedFormUploadForm")[0].reset();
 
-            try {
-            const fileContentBase64 = await readFileAsBase64(file);
+            //set review status
+            reviewStatus.isSignedPDFUploaded = true;
+            reviewStatus.signedPDFFileName = file.name;
 
-            $.ajax({
-                url: UPLOAD_FLOW_URL,
-                method: "POST",
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: JSON.stringify({
-                    conId: conId,
-                    fileName: file.name,
-                    fileContentBase64: fileContentBase64,
-                    contentType: file.type || "application/octet-stream"  
-                }),
-                success: function (response) {
-                if (response && response.success === false) {
-                    showUploadMessage("danger", response.message || "Upload failed.");
-                    return;
-                }
+            $("#btnSubmitFinal").prop("disabled", false);
+            alert("File uploaded successfully. You may now submit the form.");
 
-                showUploadMessage("success", response.message || "File uploaded successfully.");
-                //$("#signedFormUploadForm")[0].reset();
-
-                //set review status
-                reviewStatus.isSignedPDFUploaded = true;
-                reviewStatus.signedPDFFileName = file.name;
-
-                $("#btnSubmitFinal").prop("disabled", false);
-                alert("File uploaded successfully. You may now submit the form.");
-
-                },
-                error: function (xhr) {
-                const message = xhr.responseJSON && xhr.responseJSON.message
-                    ? xhr.responseJSON.message
-                    : "Upload failed. Please try again.";
-                showUploadMessage("danger", message);
-                },
-                complete: function () {
-                setUploadLoading(false);
-                }
-            });
-            } catch (error) {
-            showUploadMessage("danger", error.message || "Unable to upload the file.");
+            },
+            error: function (xhr) {
+            const message = xhr.responseJSON && xhr.responseJSON.message
+                ? xhr.responseJSON.message
+                : "Upload failed. Please try again.";
+            showUploadMessage("danger", message);
+            },
+            complete: function () {
             setUploadLoading(false);
             }
         });
+        } catch (error) {
+        showUploadMessage("danger", error.message || "Unable to upload the file.");
+        setUploadLoading(false);
+        }
+    });
 
-        $('button[data-bs-target="#reviewSubmitPart"]').on("shown.bs.tab", function () {
-            refreshReviewSubmitStatus();
-        });
+    $('button[data-bs-target="#reviewSubmitPart"]').on("shown.bs.tab", function () {
+        refreshReviewSubmitStatus();
+    });
 
-        $(document).on("click", '[data-next-tab="#reviewSubmitPart"]', function () {
-            setTimeout(refreshReviewSubmitStatus, 200);
-        });
+    $(document).on("click", '[data-next-tab="#reviewSubmitPart"]', function () {
+        setTimeout(refreshReviewSubmitStatus, 200);
+    });
 
-        $('button[data-bs-target="#uploadSignedFormPart"]').on("show.bs.tab", function (event) {
-            if (!reviewStatus.validationPassed) {
-                event.preventDefault();
-                refreshReviewSubmitStatus();
-            }
-        });
-
-        $("#btnSaveForLater").on("click", function () {
-            UpdateFormData("PC", {
-                validate: false,
-                successMessage: "Form saved successfully.",
-                showAlert: true
-            });
-        });
-
-        $("#btnSubmitFinal").on("click", function () {
-            refreshReviewSubmitStatus();
-
-            if (!reviewStatus.validationPassed) {
-                showUploadMessage("danger", "Please complete all required fields before submitting.");
-                return;
-            }
-
-            if (!reviewStatus.isSignedPDFUploaded) {
-                showUploadMessage("danger", "Please upload the signed PDF before submitting.");
-                return;
-            }
-
-            if (!confirm("Once submitted you cannot make any further changes in the form. Do you want to submit now?")) {
-                return;
-            }
-
-            SubmitFinalForm();
-        });
-
-        //btnPrintPdf
-        $(document).on("click", "#btnPrintPdf", async function (event) {
+    $('button[data-bs-target="#uploadSignedFormPart"]').on("show.bs.tab", function (event) {
+        if (!reviewStatus.validationPassed) {
             event.preventDefault();
+            refreshReviewSubmitStatus();
+        }
+    });
 
-            if (!refreshReviewSubmitStatus()) {
-                return;
-            }
-
-            try {
-                $(this).prop("disabled", true).text("Generating PDF...");
-
-                await downloadPdfFromBase64Flow();
-
-            } catch (error) {
-                console.error(error);
-                alert("PDF generation failed.");
-            } finally {
-                $("#btnPrintPdf")
-                    .prop("disabled", false)
-                    .html('<i class="bi bi-file-earmark-pdf-fill me-1"></i>Print to PDF');
-            }
+    $("#btnSaveForLater").on("click", function () {
+        UpdateFormData("PC", {
+            validate: false,
+            successMessage: "Form saved successfully.",
+            showAlert: true
         });
+    });
 
-        $("#pageLoader").fadeOut(200);
+    $("#btnSubmitFinal").on("click", function () {
+        refreshReviewSubmitStatus();
+
+        if (!reviewStatus.validationPassed) {
+            showUploadMessage("danger", "Please complete all required fields before submitting.");
+            return;
+        }
+
+        if (!reviewStatus.isSignedPDFUploaded) {
+            showUploadMessage("danger", "Please upload the signed PDF before submitting.");
+            return;
+        }
+
+        if (!confirm("Once submitted you cannot make any further changes in the form. Do you want to submit now?")) {
+            return;
+        }
+
+        SubmitFinalForm();
+    });
+
+    //btnPrintPdf
+    $(document).on("click", "#btnPrintPdf", async function (event) {
+        event.preventDefault();
+
+        if (!refreshReviewSubmitStatus()) {
+            return;
+        }
+
+        try {
+            $(this).prop("disabled", true).text("Generating PDF...");
+
+            await downloadPdfFromBase64Flow();
+
+        } catch (error) {
+            console.error(error);
+            alert("PDF generation failed.");
+        } finally {
+            $("#btnPrintPdf")
+                .prop("disabled", false)
+                .html('<i class="bi bi-file-earmark-pdf-fill me-1"></i>Print to PDF');
+        }
+    });
+
+    $(document).on("change", "input[name='P2Q1']", function () {
+        ToggleYesResponseRow('rowQ1', 'P2Q1');
+    });
+
+    $(document).on("change", "input[name='P2Q21']", function () {
+        ToggleYesResponseRow('rowQ21', 'P2Q21');
+    });
+
+    $(document).on("change", "input[name='P2Q22']", function () {
+        ToggleYesResponseRow('rowQ22', 'P2Q22');
+    });
+
+    $(document).on("change", "input[name='P2Q23']", function () {
+        ToggleYesResponseRow('rowQ23', 'P2Q23');
+    });
+
+    $(document).on("change", "input[name='P2Q31']", function () {
+        ToggleYesResponseRow('rowQ31', 'P2Q31');
+    });
+
+    $(document).on("change", "input[name='P2Q32']", function () {
+        ToggleYesResponseRow('rowQ32', 'P2Q32');
+    });
+
+    $(document).on("change", "input[name='P2Q41']", function () {
+        ToggleYesResponseRow('rowQ41', 'P2Q41');
+    });
+
+    $(document).on("change", "input[name='P2Q42']", function () {
+        ToggleYesResponseRow('rowQ42', 'P2Q42');
+    });
+
+    $(document).on("change", "input[name='P2Q51']", function () {
+        ToggleYesResponseRow('rowQ51', 'P2Q51');
+    });
+
+    $(document).on("change", "input[name='P2Q52']", function () {
+        ToggleYesResponseRow('rowQ52', 'P2Q52');
+    });
+
+    
+    $("#pageLoader").fadeOut(200);
 
     
 });
@@ -451,7 +562,7 @@ function UploadSignedPDF() {
 function refreshReviewSubmitStatus() {
     const isFormValid = ValidateFormData();
    // const isFormValid = true;
-   //const isFileUploaded = reviewStatus.isSignedPDFUploaded === true;
+   const isFileUploaded = reviewStatus.isSignedPDFUploaded === true;
 
     reviewStatus.validationPassed = isFormValid;
     //reviewStatus.validationPassed = true;
@@ -510,24 +621,15 @@ function ValidateFormData() {
         var questionName = ConFormQuestionFields[q];
 
         if (!GetRadioValue(questionName)) {
-            errors.push("Form 2 - Question " + GetQuestionDisplayNumber(questionName) + " must be answered Yes or No.");
+            errors.push("Form 3 - Question " + GetQuestionDisplayNumber(questionName) + " must be answered Yes or No.");
             MarkRadioInvalid(questionName);
         }
     }
 
-    if (HasAnyYesResponse()) {
-        for (var y = 0; y < ConFormYesExplanationFields.length; y++) {
-            var explanationField = ConFormYesExplanationFields[y];
-
-            if ($.trim($("#" + explanationField).val()) == "") {
-                errors.push("Explanation of Yes responses is required.");
-                MarkInvalid("#" + explanationField);
-            }
-        }
-    }
+    ValidateYesExplanationRows(errors);
 
     if (!IsValidEmail($("#P2Email").val())) {
-        errors.push("Form 2 - Email is not valid.");
+        errors.push("Form 3 - Email is not valid.");
         MarkInvalid("#P2Email");
     }
 
@@ -599,22 +701,23 @@ function UpdateFormData(status, options) {
         url: AppendQueryString(ConFormConfig.updateFlowUrl, "ConID", conId),
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify(payload),
-        success: function () {
-            SaveBeneficiariesData();
+        data: JSON.stringify(payload)
+    }).then(function () {
+        return $.when(
+            SaveBeneficiariesData(),
+            SaveConRequestYesResponsesData()
+        ).then(function () {
             ShowConFormMessage("Success", options.successMessage || "Form data saved successfully.");
 
             if (options.showAlert) {
                 alert(options.successMessage || "Form data saved successfully.");
             }
-        },
-        error: function (xhr) {
-            console.log(xhr);
-            ShowConFormMessage("Error", "Unable to save form data.");
-        },
-        complete: function () {
+        });
+    }).fail(function (xhr) {
+        console.log(xhr);
+        ShowConFormMessage("Error", "Unable to save form data.");
+    }).always(function () {
             HideProcessing();
-        }
     });
 }
 
@@ -665,6 +768,7 @@ function FillFormData() {
             }
 
             SetConFormValues(data);
+            ApplyYesResponseVisibility();
         },
         error: function (xhr) {
             console.log(xhr);
@@ -701,7 +805,7 @@ function GetControlValue(columnName) {
         }
 
         if (ConFormDateColumns.indexOf(columnName) > -1) {
-            return ToSharePointDate($control.val());
+            return ToSharePointDate(GetFlatpickrControlDate($control));
         }
 
         return $.trim($control.val());
@@ -736,7 +840,7 @@ function SetControlValue(columnName, value) {
         }
 
         if (ConFormDateColumns.indexOf(columnName) > -1) {
-            $control.val(ToHtmlDate(value));
+            ToHtmlDate($control, value);
             return;
         }
 
@@ -775,25 +879,13 @@ function NormalizeFlowResponse(response) {
     return response;
 }
 
-function ToHtmlDate(value) {
-    if (!value) {
-        return "";
+function ToHtmlDate(ctrl, value) {
+    if (ctrl && ctrl.jquery) {
+        SetFlatpickrControlDate(ctrl, value);
+        return;
     }
 
-    if (/^\d{4}-\d{2}-\d{2}$/.test(value)) {
-        return value;
-    }
-
-    var dateValue = new Date(value);
-
-    if (isNaN(dateValue.getTime())) {
-        return "";
-    }
-
-    var month = (dateValue.getMonth() + 1).toString().padStart(2, "0");
-    var day = dateValue.getDate().toString().padStart(2, "0");
-
-    return dateValue.getFullYear() + "-" + month + "-" + day;
+    return FormatFlatpickrDate(ParseDateValue(ctrl));
 }
 
 function IsTruthyValue(value) {
@@ -830,24 +922,120 @@ function GetRadioValue(name) {
 }
 
 function ToSharePointDate(value) {
+    var dateValue = ParseDateValue(value);
+
+    if (!dateValue) {
+        return null;
+    }
+
+    return new Date(Date.UTC(
+        dateValue.getFullYear(),
+        dateValue.getMonth(),
+        dateValue.getDate()
+    )).toISOString();
+}
+
+function GetFlatpickrControlDate($control) {
+    if (!$control || !$control.length) {
+        return "";
+    }
+
+    var picker = $control[0]._flatpickr;
+
+    if (picker && picker.selectedDates && picker.selectedDates.length > 0) {
+        return picker.selectedDates[0];
+    }
+
+    return $.trim($control.val());
+}
+
+function SetFlatpickrControlDate($control, value) {
+    var dateValue = ParseDateValue(value);
+
+    if (!$control || !$control.length) {
+        return;
+    }
+
+    if (!dateValue) {
+        if ($control[0]._flatpickr) {
+            $control[0]._flatpickr.clear();
+        } else {
+            $control.val("");
+        }
+
+        return;
+    }
+
+    if ($control[0]._flatpickr) {
+        $control[0]._flatpickr.setDate(dateValue, true);
+    } else {
+        $control.val(FormatFlatpickrDate(dateValue));
+    }
+}
+
+function ParseDateValue(value) {
     if (!value) {
         return null;
     }
 
-    var dateValue;
+    if (value instanceof Date) {
+        return isNaN(value.getTime()) ? null : value;
+    }
 
-    if (/^\d{2}\/\d{2}\/\d{4}$/.test(value)) {
-        var parts = value.split("/");
-        dateValue = new Date(parts[2], parseInt(parts[1], 10) - 1, parts[0]);
+    var textValue = $.trim(value.toString());
+    var dateValue = null;
+    var parts;
+
+    if (/^\d{1,2}-[A-Za-z]{3}-\d{4}$/.test(textValue)) {
+        parts = textValue.split("-");
+        var monthIndex = GetMonthIndex(parts[1]);
+
+        if (monthIndex > -1) {
+            dateValue = new Date(parseInt(parts[2], 10), monthIndex, parseInt(parts[0], 10));
+        }
+    } else if (/^\d{1,2}\/\d{1,2}\/\d{4}$/.test(textValue)) {
+        parts = textValue.split("/");
+        dateValue = new Date(parseInt(parts[2], 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
+    } else if (/^\d{4}-\d{2}-\d{2}$/.test(textValue)) {
+        parts = textValue.split("-");
+        dateValue = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
     } else {
-        dateValue = new Date(value);
+        dateValue = new Date(textValue);
     }
 
-    if (isNaN(dateValue.getTime())) {
-        return null;
+    return dateValue && !isNaN(dateValue.getTime()) ? dateValue : null;
+}
+
+function FormatFlatpickrDate(value) {
+    var dateValue = ParseDateValue(value);
+
+    if (!dateValue) {
+        return "";
     }
 
-    return dateValue.toISOString();
+    var day = dateValue.getDate().toString().padStart(2, "0");
+    var month = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"][dateValue.getMonth()];
+
+    return day + "-" + month + "-" + dateValue.getFullYear();
+}
+
+function GetMonthIndex(monthName) {
+    var months = {
+        jan: 0,
+        feb: 1,
+        mar: 2,
+        apr: 3,
+        may: 4,
+        jun: 5,
+        jul: 6,
+        aug: 7,
+        sep: 8,
+        oct: 9,
+        nov: 10,
+        dec: 11
+    };
+
+    return months[monthName.toLowerCase()] !== undefined ? months[monthName.toLowerCase()] : -1;
 }
 
 function ClearConFormValidation() {
@@ -923,6 +1111,38 @@ function GetQueryStringValue(name) {
     return params.get(name) || "";
 }
 
+function InitializeConFormAccess() {
+    ConFormAccess.mode = $.trim(GetQueryStringValue("mod")).toLowerCase();
+    ConFormAccess.conId = $.trim(GetQueryStringValue("ConID"));
+    ConFormAccess.token = $.trim(GetQueryStringValue("token"));
+    ConFormAccess.isAdminRead = ConFormAccess.mode === "admread" && !!ConFormAccess.conId;
+    ConFormAccess.isConsultant = !!ConFormAccess.conId && !!ConFormAccess.token;
+
+    if (!ConFormAccess.isAdminRead && !ConFormAccess.isConsultant) {
+        window.location.replace("errorhandler.html");
+        return false;
+    }
+
+    return true;
+}
+
+function ApplyConFormAccessMode() {
+    if (ConFormAccess.isAdminRead) {
+        $("#reviewSubmitTabItem, #uploadSignedFormTabItem").addClass("d-none");
+        $("#reviewSubmitPart, #uploadSignedFormPart").removeClass("show active").addClass("d-none");
+        $("[data-next-tab='#reviewSubmitPart'], [data-next-tab='#uploadSignedFormPart']").addClass("d-none");
+
+        $("#part1Sheet, #part2Sheet, #part3Sheet")
+            .find("input, textarea, select")
+            .prop("disabled", true);
+
+        $("#part1Sheet #btnAddBeneficiary, #part1Sheet #btnSaveBeneficiary, #part1Sheet .edit, #part1Sheet .delete")
+            .prop("disabled", true);
+    } else {
+        $("#reviewSubmitTabItem").removeClass("d-none");
+    }
+}
+
 function AppendQueryString(url, key, value) {
     var separator = url.indexOf("?") > -1 ? "&" : "?";
     return url + separator + encodeURIComponent(key) + "=" + encodeURIComponent(value);
@@ -952,8 +1172,109 @@ $(document).on("change input", "input, select, textarea", function () {
 
 
 
+function ToggleYesResponseRow(rowToToggle, radioToCheck, clearWhenHidden) {
+    clearWhenHidden = clearWhenHidden !== false;
+    var checkedValue = $("input[name='" + radioToCheck + "']:checked").val();
+    
+    if (checkedValue == "Yes") {
+        $("#" + rowToToggle).show();
+    } else {
+        $("#" + rowToToggle).hide();
+        if (clearWhenHidden) {
+            $("#" + rowToToggle).find("textarea").val("").removeClass("is-invalid");
+        }
+    }
+}
 
+function ApplyYesResponseVisibility() {
+    $.each(ConFormYesExplanationFields, function (_, config) {
+        ToggleYesResponseRow(config.rowId, config.question, false);
+    });
+}
 
+function ValidateYesExplanationRows(errors) {
+    $.each(ConFormYesExplanationFields, function (_, config) {
+        if (GetRadioValue(config.question) != "Yes") {
+            return;
+        }
+
+        $.each(ConFormYesExplanationColumns, function (_, column) {
+            var fieldId = column.prefix + config.suffix;
+
+            if ($.trim($("#" + fieldId).val()) == "") {
+                errors.push("Form 3 - Question " + config.display + ": " + column.label + " is required in Explanation of \"Yes\" Responses.");
+                MarkInvalid("#" + fieldId);
+            }
+        });
+    });
+}
+
+function loadConRequestYesResponses() {
+    $.each(conRequestYesResponses, function (_, item) {
+        var config = GetYesExplanationConfig(item.QNo || item.QuestionNo || item.QuestionNumber || item.Question || item.QuestionCode);
+
+        if (!config) {
+            return;
+        }
+
+        SetYesExplanationRowValues(config, item);
+    });
+
+    ApplyYesResponseVisibility();
+}
+
+function GetYesExplanationConfig(questionValue) {
+    if (!questionValue) {
+        return null;
+    }
+
+    var normalized = questionValue.toString().replace(/^P2Q/i, "").replace(/\./g, "");
+
+    for (var i = 0; i < ConFormYesExplanationFields.length; i++) {
+        var config = ConFormYesExplanationFields[i];
+
+        if (config.suffix.replace(/^Q/, "") == normalized ||
+            config.display.replace(/\./g, "") == normalized ||
+            config.question == questionValue) {
+            return config;
+        }
+    }
+
+    return null;
+}
+
+function SetYesExplanationRowValues(config, item) {
+    $("#P2ExplainDetail" + config.suffix).val(item.P2ExplainDetail || item.ExplainDetail || item.Detail || "");
+    $("#P2ExplainOrgName" + config.suffix).val(item.P2ExplainOrgName || item.ExplainOrgName || item.OrgName || item.OrganizationName || "");
+    $("#P2ExplainBelongs" + config.suffix).val(item.P2ExplainBelongs || item.ExplainBelongs || item.BelongsTo || "");
+    $("#P2ExplainValue" + config.suffix).val(item.P2ExplainValue || item.ExplainValue || item.Value || "");
+    $("#P2ExplainInterest" + config.suffix).val(item.P2ExplainInterest || item.ExplainInterest || item.Interest || "");
+    $("#P2ExplainOther" + config.suffix).val(item.P2ExplainOther || item.ExplainOther || item.Other || "");
+}
+
+function BuildConRequestYesResponsesPayload(conId) {
+    var rows = [];
+
+    $.each(ConFormYesExplanationFields, function (_, config) {
+        if (GetRadioValue(config.question) != "Yes") {
+            return;
+        }
+
+        rows.push({
+            ConID: conId,
+            QNo: config.display,
+            QuestionCode: config.question,
+            P2ExplainDetail: $.trim($("#P2ExplainDetail" + config.suffix).val()),
+            P2ExplainOrgName: $.trim($("#P2ExplainOrgName" + config.suffix).val()),
+            P2ExplainBelongs: $.trim($("#P2ExplainBelongs" + config.suffix).val()),
+            P2ExplainValue: $.trim($("#P2ExplainValue" + config.suffix).val()),
+            P2ExplainInterest: $.trim($("#P2ExplainInterest" + config.suffix).val()),
+            P2ExplainOther: $.trim($("#P2ExplainOther" + config.suffix).val())
+        });
+    });
+
+    return rows;
+}
 
 
 
@@ -976,7 +1297,7 @@ function loadBeneficiaries() {
         tbody += "</td>";
         tbody += "</tr>";
         tbody += "<tr class='beneficiary-address-row'>";
-        tbody += "<td colspan='5'><strong>Address:</strong> " + HtmlEncode(item.Address || "") + "</td>";
+        tbody += "<td colspan='5'><strong>Address, e-mail and phone number:</strong><br> " + HtmlEncode(item.Address || "") + "</td>";
         tbody += "<td class='no-print'></td>";
         tbody += "</tr>";
     });
@@ -992,7 +1313,7 @@ $(document).on("click", ".edit", function () {
 
     $("#hdnRow").val(i);
     $("#txtBenName").val(b.Name);
-    $("#txtBenDOB").val(b.DOB);
+    SetFlatpickrControlDate($("#txtBenDOB"), b.DOB);
     $("#ddlSex").val(b.Sex);
     $("#txtRelationship").val(b.Relationship);
     $("#txtShare").val(b.Share);
@@ -1040,6 +1361,55 @@ function FillBeneficiariesData() {
         error: function (xhr) {
             console.log(xhr);
             ShowConFormMessage("Error", "Unable to load beneficiary data.");
+        }
+    });
+}
+
+function FillConRequestYesResponsesData() {
+    var conId = GetQueryStringValue("ConID");
+
+    if (!conId || !ConFormConfig.getConRequestYesResponse) {
+        return $.Deferred().resolve().promise();
+    }
+
+    return $.ajax({
+        url: AppendQueryString(ConFormConfig.getConRequestYesResponse, "ConID", conId),
+        type: "GET",
+        contentType: "application/json",
+        success: function (response) {
+            conRequestYesResponses = NormalizeConRequestYesResponses(response);
+            loadConRequestYesResponses();
+        },
+        error: function (xhr) {
+            console.log(xhr);
+            ShowConFormMessage("Error", "Unable to load Yes-response explanation data.");
+        }
+    });
+}
+
+function SaveConRequestYesResponsesData() {
+    var conId = GetQueryStringValue("ConID");
+
+    if (!conId || !ConFormConfig.saveConRequestYesResponses) {
+        return $.Deferred().resolve().promise();
+    }
+
+    var payload = {
+        ConID: conId,
+        ReplaceExisting: true,
+        ConRequestYesResponses: BuildConRequestYesResponsesPayload(conId)
+    };
+
+    console.log("Saving Yes-response explanation data:", payload);
+
+    return $.ajax({
+        url: AppendQueryString(ConFormConfig.saveConRequestYesResponses, "ConID", conId),
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(payload),
+        error: function (xhr) {
+            console.log("Yes-response explanation save failed:", xhr);
+            ShowConFormMessage("Error", "Unable to save Yes-response explanation data.");
         }
     });
 }
@@ -1109,8 +1479,52 @@ function NormalizeBeneficiariesResponse(response) {
     });
 }
 
-function HtmlEncode(value) {
+function NormalizeConRequestYesResponses(response) {
+    var rows = [];
+
+    if ($.isArray(response)) {
+        rows = response;
+    } else if (response && $.isArray(response.YesResponses)) {
+        rows = response.YesResponses;
+    } else if (response && response.value && $.isArray(response.value)) {
+        rows = response.value;
+    } else if (response && response.d && response.d.results && $.isArray(response.d.results)) {
+        rows = response.d.results;
+    }
+
+    return $.map(rows, function (item) {
+        return {
+            QNo: item.QNo || item.QuestionNumber || item.Question || "",
+            QuestionCode: item.QuestionCode || "",
+            P2ExplainDetail: item.P2ExplainDetail || item.ExplainDetail || item.Detail || "",
+            P2ExplainOrgName: item.P2ExplainOrgName || item.ExplainOrgName || item.OrgName || item.OrganizationName || "",
+            P2ExplainBelongs: item.P2ExplainBelongs || item.ExplainBelongs || item.BelongsTo || "",
+            P2ExplainValue: item.P2ExplainValue || item.ExplainValue || item.Value || "",
+            P2ExplainInterest: item.P2ExplainInterest || item.ExplainInterest || item.Interest || "",
+            P2ExplainOther: item.P2ExplainOther || item.ExplainOther || item.Other || ""
+        };
+    });
+}
+
+/*function HtmlEncode(value) {
     return $("<div>").text(value == null ? "" : value).html();
+}*/
+
+function setSectionDisabled(sectionId, disabled) {
+    $("#" + sectionId)
+        .find("input, textarea, select, button")
+        .prop("disabled", disabled);
+}
+
+function HtmlEncode(value) {
+    if (value == null) {
+        return "";
+    }
+
+    return $("<div>")
+        .text(value)
+        .html()
+        .replace(/\r\n|\r|\n/g, "<br>");
 }
 
 function ShowModal(id) {
@@ -1295,8 +1709,11 @@ function cloneHtmlWithCurrentFormValues(selector) {
 
 async function buildPrintableHtml() {
     const part1Html = await getPrintablePartHtml("#part1Sheet");
-    const part2Html = await getPrintablePartHtml("#part2Sheet");
+    // Footnotes are rendered as their own final page. Remove them from Part 2
+    // so the converter cannot split or duplicate them at the end of that part.
+    const part2Html = await getPrintablePartHtml("#part2Sheet", ["#footnotes"]);
     const part3Html = await getPrintablePartHtml("#part3Sheet");
+    const footnotesHtml = await getPrintablePartHtml("#footnotes");
 
     return `
 <!doctype html>
@@ -1339,6 +1756,15 @@ async function buildPrintableHtml() {
         }
 
         .pdf-page:last-child {
+            page-break-after: auto;
+            break-after: auto;
+        }
+
+        .pdf-footnotes-page {
+            page-break-before: always;
+            break-before: page;
+            page-break-inside: avoid;
+            break-inside: avoid;
             page-break-after: auto;
             break-after: auto;
         }
@@ -1430,6 +1856,22 @@ async function buildPrintableHtml() {
             width: 92px;
             height: 92px;
             object-fit: contain;
+        }
+
+        .medical-section {
+            position: relative;
+        }
+
+        .medical-version-text {
+            position: absolute;
+            top: 20px;
+            right: -20px;
+            transform: rotate(180deg);
+            writing-mode: vertical-rl;
+            white-space: nowrap;
+            font-size: 9px;
+            color: rgb(28, 28, 129);
+            font-weight: normal;
         }
 
         .content {
@@ -1624,15 +2066,20 @@ async function buildPrintableHtml() {
 </head>
 <body>
     <div class="pdf-page">${part1Html}</div>
-    <div class="pdf-page">${part2Html}</div>
     <div class="pdf-page">${part3Html}</div>
+    <div class="pdf-page">${part2Html}</div>
+    <div class="pdf-page pdf-footnotes-page">${footnotesHtml}</div>
 </body>
 </html>`;
 }
 
-async function getPrintablePartHtml(selector) {
+async function getPrintablePartHtml(selector, removeSelectors) {
     const $clone = cloneHtmlWithCurrentFormValues(selector);
     await embedImagesAsBase64($clone);
+
+    (removeSelectors || []).forEach(function (removeSelector) {
+        $clone.find(removeSelector).remove();
+    });
 
     $clone.removeClass("fade");
     $clone.addClass("show active");
